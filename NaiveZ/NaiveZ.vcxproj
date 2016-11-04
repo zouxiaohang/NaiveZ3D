@@ -22,6 +22,7 @@
     <ProjectGuid>{487129E5-EBFB-45E2-BDC2-0B216C83C862}</ProjectGuid>
     <RootNamespace>NaiveZ</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <ProjectName>NaiveZ3D</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -110,7 +111,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="File\IOBJFileMgr.cpp" />
+    <ClCompile Include="File\Mesh.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Math\Vector.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="File\Include\IFileMgr.h" />
+    <ClInclude Include="File\Include\IOBJFileMgr.h" />
+    <ClInclude Include="File\Include\Mesh.h" />
+    <ClInclude Include="File\Include\Model.h" />
+    <ClInclude Include="Math\Include\Utils.h" />
+    <ClInclude Include="Math\Include\Vector.h" />
+    <ClInclude Include="Utils\Include\Constant.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\EyeBall\eyeball.mtl" />
+    <None Include="Res\IronMan\IronMan.mtl" />
+    <None Include="Res\IronMan\v1_0_IronManRigged.max" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -14,8 +14,72 @@
     <Filter Include="File">
       <UniqueIdentifier>{7b82f476-354f-4458-bbcc-952bed994dc8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="File\Include">
+      <UniqueIdentifier>{e90e0690-e4b1-4810-8cd8-62b8b72fdfbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math\Include">
+      <UniqueIdentifier>{eeadfd7f-006c-4aee-8183-44f5ea2dcd46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{fa6d0dec-c364-41c1-9622-641549cdbbca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils\Include">
+      <UniqueIdentifier>{ec48825c-b5ac-4b56-a908-0331dec12415}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Res">
+      <UniqueIdentifier>{ba8fb8d0-ce96-4a0e-b9ed-7dfd0d01158a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Res\IronMan">
+      <UniqueIdentifier>{e782ef74-d20d-40fb-b540-d73a614c08d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Res\EyeBall">
+      <UniqueIdentifier>{589a1c64-fd7d-4447-bf70-9136fdd9595f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="File\IOBJFileMgr.cpp">
+      <Filter>File</Filter>
+    </ClCompile>
+    <ClCompile Include="File\Mesh.cpp">
+      <Filter>File</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Vector.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="File\Include\IFileMgr.h">
+      <Filter>File\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Include\Vector.h">
+      <Filter>Math\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\Include\Constant.h">
+      <Filter>Utils\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="File\Include\IOBJFileMgr.h">
+      <Filter>File\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="File\Include\Mesh.h">
+      <Filter>File\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="File\Include\Model.h">
+      <Filter>File\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Include\Utils.h">
+      <Filter>Math\Include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\IronMan\IronMan.mtl">
+      <Filter>Res\IronMan</Filter>
+    </None>
+    <None Include="Res\IronMan\v1_0_IronManRigged.max">
+      <Filter>Res\IronMan</Filter>
+    </None>
+    <None Include="Res\EyeBall\eyeball.mtl">
+      <Filter>Res\EyeBall</Filter>
+    </None>
   </ItemGroup>
 </Project>
