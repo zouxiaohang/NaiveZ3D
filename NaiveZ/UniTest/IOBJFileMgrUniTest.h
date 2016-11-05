@@ -6,7 +6,7 @@ namespace NaiveZ3D
 {
 	namespace UniTest
 	{
-		class ShaderUniTest : public UniTest
+		class IOBJFileMgrUniTest : public UniTest
 		{
 		public:
 			static bool Test();

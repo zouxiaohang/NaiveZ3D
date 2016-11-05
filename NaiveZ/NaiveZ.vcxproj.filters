@@ -101,6 +101,9 @@
     <ClCompile Include="UniTest\ShaderUniTest.cpp">
       <Filter>UniTest</Filter>
     </ClCompile>
+    <ClCompile Include="UniTest\IOBJFileMgrUniTest.cpp">
+      <Filter>UniTest</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="File\Include\IFileMgr.h">
@@ -158,6 +161,9 @@
       <Filter>UniTest</Filter>
     </ClInclude>
     <ClInclude Include="UniTest\ShaderUniTest.h">
+      <Filter>UniTest</Filter>
+    </ClInclude>
+    <ClInclude Include="UniTest\IOBJFileMgrUniTest.h">
       <Filter>UniTest</Filter>
     </ClInclude>
   </ItemGroup>

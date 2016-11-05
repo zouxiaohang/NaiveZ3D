@@ -8,7 +8,7 @@ namespace NaiveZ3D
 {
 	class Vector3;
 
-	class IOBJFileMgr : IFileMgr
+	class IOBJFileMgr : public IFileMgr
 	{
 	public:
 		IOBJFileMgr()
@@ -20,8 +20,8 @@ namespace NaiveZ3D
 		virtual ~IOBJFileMgr(){}
 
 		virtual Model Load(const std::string& name);
-		Vector3 PareseVertex(const std::stringstream& v);
-		Vector3 ParseNormal(const std::stringstream& n);
+		//Vector3 PareseVertex(const std::stringstream& v);
+		//Vector3 ParseNormal(const std::stringstream& n);
 		//Face ParseFace(const std::string& f);
 	};
 }

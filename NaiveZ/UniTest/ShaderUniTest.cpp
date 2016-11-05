@@ -30,6 +30,7 @@ bool NaiveZ3D::UniTest::ShaderUniTest::Test()
 			SetConsoleColor(ConsoleColor::RED);
 			cout << "CompileState: " << shader.GetCompileErrorInfo() << endl;
 			SetConsoleColor();
+
 			return false;
 		}
 		else if (shader.GetLinkState() != Shader::ShaderState::SUCC)
@@ -37,6 +38,7 @@ bool NaiveZ3D::UniTest::ShaderUniTest::Test()
 			SetConsoleColor(ConsoleColor::RED);
 			cout << "LinkState: " << shader.GetLinkErrorInfo() << endl;
 			SetConsoleColor();
+
 			return false;
 		}
 	}
