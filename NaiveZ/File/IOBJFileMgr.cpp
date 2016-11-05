@@ -50,6 +50,7 @@ namespace NaiveZ3D
 				if (meshName != "")
 				{
 					mesh.SetName(meshName);
+					mesh.SetMtl(useMtl);
 					mesh.SetVertexBuffer(vBuffer);
 					mesh.SetTextureCoordBuffer(tcBuffer);
 					mesh.SetNormalBuffer(nBuffer);
@@ -98,6 +99,7 @@ namespace NaiveZ3D
 		if (!vBuffer.empty())
 		{
 			mesh.SetName(meshName);
+			mesh.SetMtl(useMtl);
 			mesh.SetVertexBuffer(vBuffer);
 			mesh.SetTextureCoordBuffer(tcBuffer);
 			mesh.SetNormalBuffer(nBuffer);
