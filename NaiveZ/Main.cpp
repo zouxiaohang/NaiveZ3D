@@ -1,68 +1,75 @@
 #include <iostream>
 
-#define GLEW_STATIC
-#include "Third\glew-2\include\GL\glew.h"
-#include "Third\glfw3.2\include\GLFW\glfw3.h"
-
 #include "File\Include\IOBJFileMgr.h"
+#include "Application\Include\Application.h"
 
 using namespace std;
 
-void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
+#define UNITEST
 
+#ifndef UNITEST
 int main()
 {
 	//string file = "Res/EyeBall/eyeball.obj";
 	//auto mgr = NaiveZ3D::IOBJFileMgr();
 	//auto model = mgr.Load(file);
 	std::cout << "................. NaiveZ3D engine init............" << std::endl;
-	glfwInit();
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
-
-	GLFWwindow* window = glfwCreateWindow(1334, 750, "NaiveZ3D", nullptr, nullptr);
-	if (window == nullptr)
+	
+	NaiveZ3D::Application app("NaiveZ3D", 1334, 750);
+	if (!app.Init())
 	{
-		std::cout << "Failed to create GLFW window" << std::endl;
-		glfwTerminate();
-		return -1;
+		app.Terminate();
 	}
-	glfwMakeContextCurrent(window);
-	glfwSetKeyCallback(window, key_callback);
+	app.Run();
 
-	glewExperimental = GL_TRUE;
-	if (glewInit() != GLEW_OK)
+	//system("pause");
+	return 0;
+}
+
+#else
+
+#include <map>
+#include <string>
+using namespace std;
+
+#include "Core\GLRender\Include\GLShader.h"
+using namespace NaiveZ3D;
+
+int main()
+{
+	std::cout << "................. NaiveZ3D engine unitest............" << std::endl;
+	Application app("NaiveZ3D UniTest", 800, 600);
+	if (!app.Init())
 	{
-		std::cout << "Failed to initialize GLEW" << std::endl;
-		return -1;
+		app.Terminate();
 	}
 
-	int width, height;
-	glfwGetFramebufferSize(window, &width, &height);
-	glViewport(0, 0, width, height);
-
-	while (!glfwWindowShouldClose(window))
+	auto shader = Shader("UniTest");
+	map<string, string> shaders = 
 	{
-		// Check and call events
-		glfwPollEvents();
-
-		// Rendering commands here
-		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
-
-		// Swap the buffers
-		glfwSwapBuffers(window);
+		{"vertex", "Res/Shaders/test.vs"},
+		{"fragment", "Res/Shaders/test.fs"},
+	};
+	auto res = shader.CompileAndLink(shaders);
+	if (!res)
+	{
+		if (shader.GetCompileState() != Shader::ShaderState::SUCC)
+		{
+			cout << "CompileState: " << shader.GetCompileErrorInfo() << endl;
+		}
+		else if (shader.GetLinkState() != Shader::ShaderState::SUCC)
+		{
+			cout << "LinkState: " << shader.GetLinkErrorInfo() << endl;
+		}
 	}
-	glfwTerminate();
+	else
+	{
+		shader.Use();
+	}
 
+	app.Terminate();
 	system("pause");
 	return 0;
 }
 
-void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
-{
-	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
-		glfwSetWindowShouldClose(window, GL_TRUE);
-}
+#endif
