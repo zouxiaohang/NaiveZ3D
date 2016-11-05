@@ -2,6 +2,17 @@
 
 namespace NaiveZ3D
 {
+	class Vector2
+	{
+	public:
+		Vector2(float x = 0.0f, float y = 0.0f) :x_(x), y_(y) {}
+		Vector2(const Vector2& v);
+		Vector2& operator = (const Vector2& v);
+	public:
+		float x_;
+		float y_;
+	};
+
 	class Vector3
 	{
 	public:
@@ -49,4 +60,7 @@ namespace NaiveZ3D
 		float z_;
 		float w_;
 	};
+
+	using TextureCoord = Vector2;
+	using Normal = Vector3;
 }

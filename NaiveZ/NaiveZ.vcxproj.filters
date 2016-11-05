@@ -70,6 +70,12 @@
     <ClInclude Include="Math\Include\Utils.h">
       <Filter>Math\Include</Filter>
     </ClInclude>
+    <ClInclude Include="File\Include\Face.h">
+      <Filter>File\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\Include\Helper.h">
+      <Filter>Utils\Include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Res\IronMan\IronMan.mtl">

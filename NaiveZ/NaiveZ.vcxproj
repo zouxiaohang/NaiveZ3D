@@ -117,6 +117,7 @@
     <ClCompile Include="Math\Vector.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="File\Include\Face.h" />
     <ClInclude Include="File\Include\IFileMgr.h" />
     <ClInclude Include="File\Include\IOBJFileMgr.h" />
     <ClInclude Include="File\Include\Mesh.h" />
@@ -124,6 +125,7 @@
     <ClInclude Include="Math\Include\Utils.h" />
     <ClInclude Include="Math\Include\Vector.h" />
     <ClInclude Include="Utils\Include\Constant.h" />
+    <ClInclude Include="Utils\Include\Helper.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Res\EyeBall\eyeball.mtl" />

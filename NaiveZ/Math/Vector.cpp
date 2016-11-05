@@ -6,6 +6,19 @@
 
 namespace NaiveZ3D
 {
+	//******************  Vector2 **********************
+	Vector2::Vector2(const Vector2& v)
+	{
+		x_ = v.x_;
+		y_ = v.y_;
+	}
+	Vector2& Vector2::operator = (const Vector2& v)
+	{
+		x_ = v.x_;
+		y_ = v.y_;
+		return *this;
+	}
+
 	//******************  Vector3 **********************
 	Vector3::Vector3(const Vector3& v)
 	{
