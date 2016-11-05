@@ -50,6 +50,18 @@
     <Filter Include="Third\glfw3.2\lib-vc2015">
       <UniqueIdentifier>{4e4d667d-2fc9-49f2-a121-7ec2081b97d7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Third\glew-2">
+      <UniqueIdentifier>{559ee338-8489-4159-b1c6-5c361bd9c0f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Third\glew-2\include">
+      <UniqueIdentifier>{7499ee13-4680-4548-b6a7-20a2b2e0420a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Third\glew-2\include\GL">
+      <UniqueIdentifier>{4b7e91f4-2f96-4882-8508-acb027386d5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Third\glew-2\lib">
+      <UniqueIdentifier>{c0fab82b-125a-49c5-9888-1d3123306a6f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -97,6 +109,18 @@
     <ClInclude Include="Third\glfw3.2\include\GLFW\glfw3native.h">
       <Filter>Third\glfw3.2\include\GLFW</Filter>
     </ClInclude>
+    <ClInclude Include="Third\glew-2\include\GL\eglew.h">
+      <Filter>Third\glew-2\include\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="Third\glew-2\include\GL\glew.h">
+      <Filter>Third\glew-2\include\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="Third\glew-2\include\GL\glxew.h">
+      <Filter>Third\glew-2\include\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="Third\glew-2\include\GL\wglew.h">
+      <Filter>Third\glew-2\include\GL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Res\IronMan\IronMan.mtl">
@@ -118,6 +142,12 @@
     </Library>
     <Library Include="Third\glfw3.2\lib-vc2015\glfw3dll.lib">
       <Filter>Third\glfw3.2\lib-vc2015</Filter>
+    </Library>
+    <Library Include="Third\glew-2\lib\Release\Win32\glew32.lib">
+      <Filter>Third\glew-2\lib</Filter>
+    </Library>
+    <Library Include="Third\glew-2\lib\Release\Win32\glew32s.lib">
+      <Filter>Third\glew-2\lib</Filter>
     </Library>
   </ItemGroup>
 </Project>
