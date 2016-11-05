@@ -35,6 +35,21 @@
     <Filter Include="Res\EyeBall">
       <UniqueIdentifier>{589a1c64-fd7d-4447-bf70-9136fdd9595f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Third">
+      <UniqueIdentifier>{0c19a28e-8f73-4bd5-a884-674d9834fb6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Third\glfw3.2">
+      <UniqueIdentifier>{fe26713b-475b-4fc6-96c1-9b744e085037}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Third\glfw3.2\include">
+      <UniqueIdentifier>{98688c03-57ef-488b-84c0-e41394c28cae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Third\glfw3.2\include\GLFW">
+      <UniqueIdentifier>{751d7c81-af78-4a2d-a8ee-3c78b6f6454f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Third\glfw3.2\lib-vc2015">
+      <UniqueIdentifier>{4e4d667d-2fc9-49f2-a121-7ec2081b97d7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -76,6 +91,12 @@
     <ClInclude Include="Utils\Include\Helper.h">
       <Filter>Utils\Include</Filter>
     </ClInclude>
+    <ClInclude Include="Third\glfw3.2\include\GLFW\glfw3.h">
+      <Filter>Third\glfw3.2\include\GLFW</Filter>
+    </ClInclude>
+    <ClInclude Include="Third\glfw3.2\include\GLFW\glfw3native.h">
+      <Filter>Third\glfw3.2\include\GLFW</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Res\IronMan\IronMan.mtl">
@@ -87,5 +108,16 @@
     <None Include="Res\EyeBall\eyeball.mtl">
       <Filter>Res\EyeBall</Filter>
     </None>
+    <None Include="Third\glfw3.2\lib-vc2015\glfw3.dll">
+      <Filter>Third\glfw3.2\lib-vc2015</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Third\glfw3.2\lib-vc2015\glfw3.lib">
+      <Filter>Third\glfw3.2\lib-vc2015</Filter>
+    </Library>
+    <Library Include="Third\glfw3.2\lib-vc2015\glfw3dll.lib">
+      <Filter>Third\glfw3.2\lib-vc2015</Filter>
+    </Library>
   </ItemGroup>
 </Project>

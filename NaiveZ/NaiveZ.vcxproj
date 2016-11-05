@@ -69,13 +69,19 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>D:\NaiveZ3D\NaiveZ\Third\glfw3.2\lib-vc2015;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -124,6 +130,8 @@
     <ClInclude Include="File\Include\Model.h" />
     <ClInclude Include="Math\Include\Utils.h" />
     <ClInclude Include="Math\Include\Vector.h" />
+    <ClInclude Include="Third\glfw3.2\include\GLFW\glfw3.h" />
+    <ClInclude Include="Third\glfw3.2\include\GLFW\glfw3native.h" />
     <ClInclude Include="Utils\Include\Constant.h" />
     <ClInclude Include="Utils\Include\Helper.h" />
   </ItemGroup>
@@ -131,6 +139,11 @@
     <None Include="Res\EyeBall\eyeball.mtl" />
     <None Include="Res\IronMan\IronMan.mtl" />
     <None Include="Res\IronMan\v1_0_IronManRigged.max" />
+    <None Include="Third\glfw3.2\lib-vc2015\glfw3.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Third\glfw3.2\lib-vc2015\glfw3.lib" />
+    <Library Include="Third\glfw3.2\lib-vc2015\glfw3dll.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
