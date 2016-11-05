@@ -77,6 +77,9 @@
     <Filter Include="Res\Shaders">
       <UniqueIdentifier>{253ed157-ac05-49f2-9286-82a601a73b83}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UniTest">
+      <UniqueIdentifier>{4f424da0-816e-4189-93ff-057a2d4f290f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -94,6 +97,9 @@
     </ClCompile>
     <ClCompile Include="Core\GLRender\GLShader.cpp">
       <Filter>Core\GLRender</Filter>
+    </ClCompile>
+    <ClCompile Include="UniTest\ShaderUniTest.cpp">
+      <Filter>UniTest</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -147,6 +153,12 @@
     </ClInclude>
     <ClInclude Include="Core\GLRender\Include\GLShader.h">
       <Filter>Core\GLRender\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="UniTest\UniTest.h">
+      <Filter>UniTest</Filter>
+    </ClInclude>
+    <ClInclude Include="UniTest\ShaderUniTest.h">
+      <Filter>UniTest</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

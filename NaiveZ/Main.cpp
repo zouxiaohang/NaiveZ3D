@@ -5,7 +5,7 @@
 
 using namespace std;
 
-#define UNITEST
+//#define UNITEST
 
 #ifndef UNITEST
 int main()
@@ -13,7 +13,7 @@ int main()
 	//string file = "Res/EyeBall/eyeball.obj";
 	//auto mgr = NaiveZ3D::IOBJFileMgr();
 	//auto model = mgr.Load(file);
-	std::cout << "................. NaiveZ3D engine init............" << std::endl;
+	cout << "................. NaiveZ3D engine init............" << endl;
 	
 	NaiveZ3D::Application app("NaiveZ3D", 1334, 750);
 	if (!app.Init())
@@ -30,44 +30,17 @@ int main()
 
 #include <map>
 #include <string>
+#include <cassert>
 using namespace std;
 
-#include "Core\GLRender\Include\GLShader.h"
-using namespace NaiveZ3D;
+#include "UniTest\ShaderUniTest.h"
 
 int main()
 {
 	std::cout << "................. NaiveZ3D engine unitest............" << std::endl;
-	Application app("NaiveZ3D UniTest", 800, 600);
-	if (!app.Init())
-	{
-		app.Terminate();
-	}
+	
+	assert(NaiveZ3D::UniTest::ShaderUniTest::Test(), "ShaderUniTest");
 
-	auto shader = Shader("UniTest");
-	map<string, string> shaders = 
-	{
-		{"vertex", "Res/Shaders/test.vs"},
-		{"fragment", "Res/Shaders/test.fs"},
-	};
-	auto res = shader.CompileAndLink(shaders);
-	if (!res)
-	{
-		if (shader.GetCompileState() != Shader::ShaderState::SUCC)
-		{
-			cout << "CompileState: " << shader.GetCompileErrorInfo() << endl;
-		}
-		else if (shader.GetLinkState() != Shader::ShaderState::SUCC)
-		{
-			cout << "LinkState: " << shader.GetLinkErrorInfo() << endl;
-		}
-	}
-	else
-	{
-		shader.Use();
-	}
-
-	app.Terminate();
 	system("pause");
 	return 0;
 }

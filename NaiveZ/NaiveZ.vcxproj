@@ -124,6 +124,7 @@
     <ClCompile Include="File\Mesh.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Math\Vector.cpp" />
+    <ClCompile Include="UniTest\ShaderUniTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\Include\Application.h" />
@@ -141,6 +142,8 @@
     <ClInclude Include="Third\glew-2\include\GL\wglew.h" />
     <ClInclude Include="Third\glfw3.2\include\GLFW\glfw3.h" />
     <ClInclude Include="Third\glfw3.2\include\GLFW\glfw3native.h" />
+    <ClInclude Include="UniTest\ShaderUniTest.h" />
+    <ClInclude Include="UniTest\UniTest.h" />
     <ClInclude Include="Utils\Include\Constant.h" />
     <ClInclude Include="Utils\Include\Helper.h" />
   </ItemGroup>
