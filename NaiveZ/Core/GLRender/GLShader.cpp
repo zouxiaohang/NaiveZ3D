@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <cassert>
 using namespace std;
 
 namespace NaiveZ3D
@@ -13,17 +14,20 @@ namespace NaiveZ3D
 		mLinkState_(ShaderState::NONE)
 	{}
 
-	Shader::~Shader()
+	void Shader::Destroy()
 	{
 		if (mLinkState_ == ShaderState::SUCC && glIsProgram(mProgram_))
 		{
 			glDeleteProgram(mProgram_);
+			mProgram_ = 0;
 		}
 	}
 
 	void Shader::Use()
 	{
-		if (mCompileState_ == ShaderState::SUCC && mLinkState_ == ShaderState::SUCC && glIsProgram(mProgram_))
+		bool ret = glIsProgram(mProgram_);
+		assert(ret);
+		if (mCompileState_ == ShaderState::SUCC && mLinkState_ == ShaderState::SUCC)
 		{
 			glUseProgram(mProgram_);
 		}
@@ -34,8 +38,8 @@ namespace NaiveZ3D
 		ifstream ifs;
 		GLint success;
 		GLchar infoLog[512];
-		GLint sh;
-		vector<GLint> vShaders;
+		GLuint sh;
+		vector<GLuint> vShaders;
 
 		///////// Compile
 		for (auto item : shaders)
@@ -53,7 +57,7 @@ namespace NaiveZ3D
 				continue;
 			}
 
-			if (sh == 0)
+			if (sh == 0 && !glIsShader(sh))
 			{
 				mCompileState_ = ShaderState::FAIL;
 				mCompileErrorInfo_ = "Function 'glCreateShader' can not create a valid shader";
@@ -90,7 +94,7 @@ namespace NaiveZ3D
 
 		////////// Link
 		mProgram_ = glCreateProgram();
-		if (mProgram_ == 0)
+		if (mProgram_ == 0 && !glIsProgram(mProgram_))
 		{
 			mLinkState_ = ShaderState::FAIL;
 			mLinkErrorInfo_ = "Function 'glCreateProgram' can not create a valid program";
@@ -99,9 +103,13 @@ namespace NaiveZ3D
 		for (auto sh : vShaders)
 		{
 			glAttachShader(mProgram_, sh);
-			glDeleteShader(sh);
+			//glDeleteShader(sh);
 		}
 		glLinkProgram(mProgram_);
+		for (auto sh : vShaders)
+		{
+			glDeleteShader(sh);
+		}
 		glGetProgramiv(mProgram_, GL_LINK_STATUS, &success);
 		if (!success)
 		{

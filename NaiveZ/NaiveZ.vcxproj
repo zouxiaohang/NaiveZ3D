@@ -119,8 +119,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application\Application.cpp" />
+    <ClCompile Include="Core\GLRender\GLModel.cpp" />
     <ClCompile Include="Core\GLRender\GLRenderSystem.cpp" />
     <ClCompile Include="Core\GLRender\GLShader.cpp" />
+    <ClCompile Include="Core\GLRender\GLShaderMgr.cpp" />
+    <ClCompile Include="Core\Scene\Scene.cpp" />
     <ClCompile Include="File\IOBJFileMgr.cpp" />
     <ClCompile Include="File\Mesh.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -132,9 +135,12 @@
   <ItemGroup>
     <ClInclude Include="Application\Include\Application.h" />
     <ClInclude Include="Core\GLRender\Include\GLColor.h" />
+    <ClInclude Include="Core\GLRender\Include\GLModel.h" />
     <ClInclude Include="Core\GLRender\Include\GLRenderSystem.h" />
     <ClInclude Include="Core\GLRender\Include\GLShader.h" />
+    <ClInclude Include="Core\GLRender\Include\GLShaderMgr.h" />
     <ClInclude Include="Core\GLRender\Include\GLViewPort.h" />
+    <ClInclude Include="Core\Scene\Include\Scene.h" />
     <ClInclude Include="File\Include\Face.h" />
     <ClInclude Include="File\Include\IFileMgr.h" />
     <ClInclude Include="File\Include\IOBJFileMgr.h" />
@@ -157,8 +163,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Res\EyeBall\eyeball.mtl" />
-    <None Include="Res\IronMan\IronMan.mtl" />
-    <None Include="Res\IronMan\v1_0_IronManRigged.max" />
+    <None Include="Res\Shaders\eyeball.fs" />
+    <None Include="Res\Shaders\eyeball.vs" />
+    <None Include="Res\Shaders\ShaderConfig" />
     <None Include="Res\Shaders\test.fs" />
     <None Include="Res\Shaders\test.vs" />
     <None Include="Third\glfw3.2\lib-vc2015\glfw3.dll" />

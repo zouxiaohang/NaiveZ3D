@@ -1,17 +1,20 @@
 #pragma once
 
 #include <string>
-#include <functional>
 #include <memory>
+#include <vector>
+#include <map>
 
 #include "GL/glew.h"
 #include "GLFW/glfw3.h"
 #include "../../Core/GLRender/Include/GLRenderSystem.h"
+#include "../../File/Include/Model.h"
 
 namespace NaiveZ3D
 {
 	using KeyCallbackDef = GLFWkeyfun;
 	using GLRSPtr = std::unique_ptr<GLRenderSystem>;
+	using ModelMap = std::map<std::string, Model>;
 
 	class Application
 	{
@@ -26,15 +29,15 @@ namespace NaiveZ3D
 		bool Init();
 		void Terminate();
 		void SetKeyCallback(KeyCallbackDef cb);
+		void LoadAndDraw(const std::vector<std::string>&);
 		void Run();
-	private:
-		//void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode);
+
 	private:
 		std::string mAppName_;
 		GLsizei mWidth_;
 		GLsizei mHeight_;
 		GLFWwindow *mWindow_;
-		//GLRenderSystem *mGLRenderSystemPtr_;
 		GLRSPtr mGLRenderSystemPtr_;
+		ModelMap mModelMap_;
 	};
 }

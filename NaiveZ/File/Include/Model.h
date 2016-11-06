@@ -17,9 +17,13 @@ namespace NaiveZ3D
 		void SetMtl(const std::string& mtl) { mMtl_ = mtl; }
 		std::string GetMtl()const { return mMtl_; }
 
-		std::vector<Mesh> GetAllMesh()const { return mMeshVector_; }
+		void SetModelName(const std::string& name) { mModelName_ = name; }
+		std::string GetModelName()const { return mModelName_; }
+
+		const std::vector<Mesh>& GetAllMesh()const { return mMeshVector_; }
 		size_t MeshSize() const { return mMeshVector_.size(); }
 	private:
+		std::string mModelName_;
 		std::string mMtl_;
 		std::vector<Mesh> mMeshVector_;
 	};

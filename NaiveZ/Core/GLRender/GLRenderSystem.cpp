@@ -2,8 +2,17 @@
 using namespace std;
 
 #include "Include\GLRenderSystem.h"
+#include "Include\GLShaderMgr.h"
 #include "../../UniTest/UniTest.h"
 #include "../../Application/Include/Application.h"
+
+NaiveZ3D::GLRenderSystem::~GLRenderSystem()
+{
+	for (auto& model : mGLModelBuffer_)
+	{
+		model.Destroy();
+	}
+}
 
 bool NaiveZ3D::GLRenderSystem::Init(Application* app)
 {
@@ -22,13 +31,18 @@ bool NaiveZ3D::GLRenderSystem::Init(Application* app)
 	glfwGetFramebufferSize(app->GetGlfwWindow(), &width, &height);
 	SetViewPort(0, 0, width, height);
 	mViewPort_.Use();
+
+	//glEnable(GL_DEPTH_TEST);
+
 	return true;
 }
 
-void NaiveZ3D::GLRenderSystem::Run(GLfloat delta)
+void NaiveZ3D::GLRenderSystem::Draw(GLfloat delta)
 {
-	glClear(GL_COLOR_BUFFER_BIT);
-
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	//‘› ±’‚√¥–¥
+	GLShaderMgr::Instance().UseShader("eyeball");
+	DrawGLModel();
 }
 
 void NaiveZ3D::GLRenderSystem::SetClearColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a)
@@ -41,7 +55,29 @@ void NaiveZ3D::GLRenderSystem::SetClearColor(GLColor c)
 	glClearColor(c.red, c.green, c.blue, c.alpha);
 }
 
+void NaiveZ3D::GLRenderSystem::CommitModel(const ModelMap& map)
+{
+	CreateGLModelBuffer(map);
+}
+
 void NaiveZ3D::GLRenderSystem::SetViewPort(GLint x, GLint y, GLint w, GLint h)
 {
 	mViewPort_ = ViewPort({ x, y }, w, h);
+}
+
+void NaiveZ3D::GLRenderSystem::CreateGLModelBuffer(const ModelMap& modelMap)
+{
+	for (const auto& kv : modelMap)
+	{
+		auto model = GLModel(kv.second);
+		mGLModelBuffer_.emplace_back(model);
+	}
+}
+
+void NaiveZ3D::GLRenderSystem::DrawGLModel()
+{
+	for (auto& model : mGLModelBuffer_)
+	{
+		model.DrawArrays();
+	}
 }

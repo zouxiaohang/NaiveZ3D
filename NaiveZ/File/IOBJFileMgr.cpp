@@ -26,6 +26,12 @@ namespace NaiveZ3D
 		string useMtl;
 
 		ifstream ifs(name);
+		if (!ifs)
+		{
+			cout << "Fail to open OBJ file->" + name;
+			return model;
+		}
+		model.SetModelName(name);
 		string buf;
 		string tok;
 		while (getline(ifs, buf))
@@ -87,12 +93,14 @@ namespace NaiveZ3D
 			else if (tok == "f")
 			{
 				string msg;
+				vector<vector<string>> f;
 				while (line >> msg)
 				{
 					auto res = Helper::Split(msg, "/");
-					auto face = Face(stoul(res[0]), stoul(res[1]), stoul(res[2]));
-					fBuffer.push_back(face);
+					f.push_back(res);
 				}
+				auto face = Face(f);
+				fBuffer.push_back(face);
 			}
 		}
 

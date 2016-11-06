@@ -29,9 +29,6 @@
     <Filter Include="Res">
       <UniqueIdentifier>{ba8fb8d0-ce96-4a0e-b9ed-7dfd0d01158a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Res\IronMan">
-      <UniqueIdentifier>{e782ef74-d20d-40fb-b540-d73a614c08d4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Res\EyeBall">
       <UniqueIdentifier>{589a1c64-fd7d-4447-bf70-9136fdd9595f}</UniqueIdentifier>
     </Filter>
@@ -80,6 +77,18 @@
     <Filter Include="UniTest">
       <UniqueIdentifier>{4f424da0-816e-4189-93ff-057a2d4f290f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Core\Scene">
+      <UniqueIdentifier>{39839477-1757-461a-a181-de4f19d6df06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Scene\Include">
+      <UniqueIdentifier>{26037efe-30f0-41a9-b4c7-fbf636d0a579}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Camera">
+      <UniqueIdentifier>{6e097c68-219d-4546-8eff-478f11424d19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Res\Cube">
+      <UniqueIdentifier>{c0a0ba4e-2502-4ec1-98bb-3732749b888b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -109,6 +118,15 @@
     </ClCompile>
     <ClCompile Include="Utils\Timer.cpp">
       <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Scene\Scene.cpp">
+      <Filter>Core\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\GLRender\GLModel.cpp">
+      <Filter>Core\GLRender</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\GLRender\GLShaderMgr.cpp">
+      <Filter>Core\GLRender</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -184,14 +202,17 @@
     <ClInclude Include="Core\GLRender\Include\GLColor.h">
       <Filter>Core\GLRender\Include</Filter>
     </ClInclude>
+    <ClInclude Include="Core\Scene\Include\Scene.h">
+      <Filter>Core\Scene\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\GLRender\Include\GLModel.h">
+      <Filter>Core\GLRender\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\GLRender\Include\GLShaderMgr.h">
+      <Filter>Core\GLRender\Include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Res\IronMan\IronMan.mtl">
-      <Filter>Res\IronMan</Filter>
-    </None>
-    <None Include="Res\IronMan\v1_0_IronManRigged.max">
-      <Filter>Res\IronMan</Filter>
-    </None>
     <None Include="Res\EyeBall\eyeball.mtl">
       <Filter>Res\EyeBall</Filter>
     </None>
@@ -202,6 +223,15 @@
       <Filter>Res\Shaders</Filter>
     </None>
     <None Include="Res\Shaders\test.vs">
+      <Filter>Res\Shaders</Filter>
+    </None>
+    <None Include="Res\Shaders\eyeball.fs">
+      <Filter>Res\Shaders</Filter>
+    </None>
+    <None Include="Res\Shaders\eyeball.vs">
+      <Filter>Res\Shaders</Filter>
+    </None>
+    <None Include="Res\Shaders\ShaderConfig">
       <Filter>Res\Shaders</Filter>
     </None>
   </ItemGroup>

@@ -3,6 +3,7 @@
 #include "Include/Application.h"
 #include "../Core/GLRender/Include/GLViewPort.h"
 #include "../Utils/Include/Constant.h"
+#include "../File/Include/IOBJFileMgr.h"
 
 void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
@@ -56,7 +57,7 @@ namespace NaiveZ3D
 			// Check and call events
 			glfwPollEvents();
 
-			mGLRenderSystemPtr_->Run(0);
+			mGLRenderSystemPtr_->Draw(0);
 
 			glfwSwapBuffers(mWindow_);
 		}
@@ -70,5 +71,16 @@ namespace NaiveZ3D
 	void Application::SetKeyCallback(KeyCallbackDef cb)
 	{
 		glfwSetKeyCallback(mWindow_, cb);
+	}
+
+	void Application::LoadAndDraw(const std::vector<std::string>& objFiles)
+	{
+		auto loader = IOBJFileMgr();
+		for (auto file : objFiles)
+		{
+			auto model = loader.Load(file);
+			mModelMap_[model.GetModelName()] = model;
+		}
+		mGLRenderSystemPtr_->CommitModel(mModelMap_);
 	}
 }

@@ -18,7 +18,8 @@ namespace NaiveZ3D
 		};
 
 		Shader(const std::string& name = "");
-		~Shader();
+		//~Shader();
+		void Destroy();
 
 		bool CompileAndLink(const std::map<std::string, std::string>&);
 
@@ -35,7 +36,7 @@ namespace NaiveZ3D
 	private:
 		std::string mShaderName_;
 		std::map<std::string, std::string> mSource_;
-		GLint mProgram_;
+		GLuint mProgram_;
 		ShaderState mCompileState_;
 		std::string mCompileErrorInfo_;
 		ShaderState mLinkState_;

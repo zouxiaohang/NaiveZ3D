@@ -17,6 +17,8 @@ int main()
 	{
 		app.Terminate();
 	}
+	vector<string> objs = {"Res/Cube/cube.obj"};
+	app.LoadAndDraw(objs);
 	app.Run();
 
 	//system("pause");
