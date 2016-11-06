@@ -104,6 +104,9 @@
     <ClCompile Include="UniTest\IOBJFileMgrUniTest.cpp">
       <Filter>UniTest</Filter>
     </ClCompile>
+    <ClCompile Include="Core\GLRender\GLRenderSystem.cpp">
+      <Filter>Core\GLRender</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="File\Include\IFileMgr.h">
@@ -165,6 +168,12 @@
     </ClInclude>
     <ClInclude Include="UniTest\IOBJFileMgrUniTest.h">
       <Filter>UniTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\GLRender\Include\GLViewPort.h">
+      <Filter>Core\GLRender\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\GLRender\Include\GLRenderSystem.h">
+      <Filter>Core\GLRender\Include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

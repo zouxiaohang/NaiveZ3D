@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "Include\Application.h"
+#include "../Core/GLRender/Include/GLViewPort.h"
 
 void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
@@ -47,7 +48,9 @@ namespace NaiveZ3D
 		}
 
 		glfwGetFramebufferSize(mWindow_, &mWidth_, &mHeight_);
-		glViewport(0, 0, mWidth_, mHeight_);
+		//glViewport(0, 0, mWidth_, mHeight_);
+		auto vp = ViewPort({ 0, 0 }, mWidth_, mHeight_);
+		vp.Use();
 
 		return true;
 	}
