@@ -2,7 +2,7 @@
 
 #include "Include/Application.h"
 #include "../Core/GLRender/Include/GLViewPort.h"
-//#include "../Core/GLRender/Include/GLRenderSystem.h"
+#include "../Utils/Include/Constant.h"
 
 void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
@@ -38,7 +38,15 @@ namespace NaiveZ3D
 
 		SetKeyCallback(KeyCallback);
 
-		return mGLRenderSystemPtr_->Init(this);
+		auto ret = mGLRenderSystemPtr_->Init(this);
+		if (!ret)
+		{
+			std::cout << "Fail to init GLRenderSystem" << std::endl;
+			return false;
+		}
+		mGLRenderSystemPtr_->SetClearColor(Color::Black);
+
+		return true;
 	}
 
 	void Application::Run()

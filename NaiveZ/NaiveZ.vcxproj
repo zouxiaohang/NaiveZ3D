@@ -131,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\Include\Application.h" />
+    <ClInclude Include="Core\GLRender\Include\GLColor.h" />
     <ClInclude Include="Core\GLRender\Include\GLRenderSystem.h" />
     <ClInclude Include="Core\GLRender\Include\GLShader.h" />
     <ClInclude Include="Core\GLRender\Include\GLViewPort.h" />

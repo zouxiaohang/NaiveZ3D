@@ -27,8 +27,18 @@ bool NaiveZ3D::GLRenderSystem::Init(Application* app)
 
 void NaiveZ3D::GLRenderSystem::Run(GLfloat delta)
 {
-	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
+
+}
+
+void NaiveZ3D::GLRenderSystem::SetClearColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a)
+{
+	glClearColor(r, g, b, a);
+}
+
+void NaiveZ3D::GLRenderSystem::SetClearColor(GLColor c)
+{
+	glClearColor(c.red, c.green, c.blue, c.alpha);
 }
 
 void NaiveZ3D::GLRenderSystem::SetViewPort(GLint x, GLint y, GLint w, GLint h)

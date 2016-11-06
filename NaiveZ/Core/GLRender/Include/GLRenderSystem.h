@@ -6,7 +6,7 @@
 
 #include "GLShaderMgr.h"
 #include "GLViewPort.h"
-//#include "../../../Application/Include/Application.h"
+#include "GLColor.h"
 
 namespace NaiveZ3D
 {
@@ -17,6 +17,9 @@ namespace NaiveZ3D
 	public:
 		bool Init(Application* app);
 		void Run(GLfloat delta);
+	public:
+		void SetClearColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a = 1.0);
+		void SetClearColor(GLColor c);
 	private:
 		void SetViewPort(GLint x, GLint y, GLint w, GLint h);
 

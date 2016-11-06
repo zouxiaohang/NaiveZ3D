@@ -39,7 +39,7 @@ namespace NaiveZ3D
 			{
 				string mtl;
 				line >> mtl;
-				model.setMtl(mtl);
+				model.SetMtl(mtl);
 			}
 			else if (tok == "usemtl")
 			{

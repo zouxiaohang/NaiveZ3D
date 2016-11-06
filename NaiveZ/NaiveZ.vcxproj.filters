@@ -181,6 +181,9 @@
     <ClInclude Include="Utils\Include\Timer.h">
       <Filter>Utils\Include</Filter>
     </ClInclude>
+    <ClInclude Include="Core\GLRender\Include\GLColor.h">
+      <Filter>Core\GLRender\Include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Res\IronMan\IronMan.mtl">

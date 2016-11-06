@@ -14,10 +14,10 @@ namespace NaiveZ3D
 			mMeshVector_.push_back(mesh);
 		}
 
-		void setMtl(const std::string& mtl) { mMtl_ = mtl; }
-		std::string getMtl()const { return mMtl_; }
+		void SetMtl(const std::string& mtl) { mMtl_ = mtl; }
+		std::string GetMtl()const { return mMtl_; }
 
-		std::vector<Mesh> getAllMesh()const { return mMeshVector_; }
+		std::vector<Mesh> GetAllMesh()const { return mMeshVector_; }
 		size_t MeshSize() const { return mMeshVector_.size(); }
 	private:
 		std::string mMtl_;
