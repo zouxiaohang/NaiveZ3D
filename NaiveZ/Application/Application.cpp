@@ -1,7 +1,8 @@
 #include <iostream>
 
-#include "Include\Application.h"
+#include "Include/Application.h"
 #include "../Core/GLRender/Include/GLViewPort.h"
+//#include "../Core/GLRender/Include/GLRenderSystem.h"
 
 void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
@@ -11,14 +12,12 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
 
 namespace NaiveZ3D
 {
-	//void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode);
-
 	Application::Application(const std::string& appName, GLsizei width, GLsizei height)
 		:mAppName_(appName),
 		mWidth_(width),
 		mHeight_(height)
 	{
-
+		mGLRenderSystemPtr_ = GLRSPtr(new GLRenderSystem);
 	}
 
 	bool Application::Init()
@@ -39,20 +38,7 @@ namespace NaiveZ3D
 
 		SetKeyCallback(KeyCallback);
 
-		glewExperimental = GL_TRUE;
-
-		if (glewInit() != GLEW_OK)
-		{
-			std::cout << "Failed to initialize GLEW" << std::endl;
-			return false;
-		}
-
-		glfwGetFramebufferSize(mWindow_, &mWidth_, &mHeight_);
-		//glViewport(0, 0, mWidth_, mHeight_);
-		auto vp = ViewPort({ 0, 0 }, mWidth_, mHeight_);
-		vp.Use();
-
-		return true;
+		return mGLRenderSystemPtr_->Init(this);
 	}
 
 	void Application::Run()
@@ -62,11 +48,8 @@ namespace NaiveZ3D
 			// Check and call events
 			glfwPollEvents();
 
-			// Rendering commands here
-			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-			glClear(GL_COLOR_BUFFER_BIT);
+			mGLRenderSystemPtr_->Run(0);
 
-			// Swap the buffers
 			glfwSwapBuffers(mWindow_);
 		}
 	}

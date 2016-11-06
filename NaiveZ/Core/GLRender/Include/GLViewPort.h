@@ -9,6 +9,7 @@ namespace NaiveZ3D
 	class ViewPort
 	{
 	public:
+		ViewPort(){}
 		ViewPort(std::pair<GLint, GLint> p, GLint w, GLint h)
 			:mBegPos_(p),
 			mWidth_(w),
