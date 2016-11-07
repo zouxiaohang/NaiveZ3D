@@ -128,6 +128,8 @@
     <ClCompile Include="File\IOBJFileMgr.cpp" />
     <ClCompile Include="File\Mesh.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Math\Matrix.cpp" />
+    <ClCompile Include="Math\Quaternion.cpp" />
     <ClCompile Include="Math\Vector.cpp" />
     <ClCompile Include="Third\glm\detail\dummy.cpp" />
     <ClCompile Include="Third\glm\detail\glm.cpp" />
@@ -150,6 +152,8 @@
     <ClInclude Include="File\Include\IOBJFileMgr.h" />
     <ClInclude Include="File\Include\Mesh.h" />
     <ClInclude Include="File\Include\Model.h" />
+    <ClInclude Include="Math\Include\Matrix.h" />
+    <ClInclude Include="Math\Include\Quaternion.h" />
     <ClInclude Include="Math\Include\Utils.h" />
     <ClInclude Include="Math\Include\Vector.h" />
     <ClInclude Include="Third\glew-2\include\GL\eglew.h" />

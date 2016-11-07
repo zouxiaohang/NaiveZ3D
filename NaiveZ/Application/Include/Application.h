@@ -9,6 +9,8 @@
 #include "GLFW/glfw3.h"
 #include "../../Core/GLRender/Include/GLRenderSystem.h"
 #include "../../File/Include/Model.h"
+#include "../../Camera/Include/Camera.h"
+#include "../../Math/Include/Vector.h"
 
 namespace NaiveZ3D
 {
@@ -32,6 +34,8 @@ namespace NaiveZ3D
 		void LoadAndDraw(const std::vector<std::string>&);
 		void Run();
 
+		void SetCamera(Vector3 pos, Vector3 target, Vector3 up = Vector3(0,1,0), Vector3 right = Vector3(1,0,0));
+
 	private:
 		std::string mAppName_;
 		GLsizei mWidth_;
@@ -39,5 +43,6 @@ namespace NaiveZ3D
 		GLFWwindow *mWindow_;
 		GLRSPtr mGLRenderSystemPtr_;
 		ModelMap mModelMap_;
+		Camera mCamera_;
 	};
 }
