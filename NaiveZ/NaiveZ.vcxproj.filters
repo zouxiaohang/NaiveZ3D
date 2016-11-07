@@ -89,6 +89,12 @@
     <Filter Include="Res\Cube">
       <UniqueIdentifier>{c0a0ba4e-2502-4ec1-98bb-3732749b888b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Doc">
+      <UniqueIdentifier>{cab97c51-5985-407d-a080-b5f4ab9ea6ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Doc\开发计划">
+      <UniqueIdentifier>{bdce8b3b-071a-4059-92de-527b5dcc8a41}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -248,5 +254,10 @@
     <Library Include="Third\glew-2\lib\Release\Win32\glew32s.lib">
       <Filter>Third\glew-2\lib</Filter>
     </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Doc\开发计划\开发计划.txt">
+      <Filter>Doc\开发计划</Filter>
+    </Text>
   </ItemGroup>
 </Project>

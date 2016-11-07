@@ -176,6 +176,9 @@
     <Library Include="Third\glfw3.2\lib-vc2015\glfw3.lib" />
     <Library Include="Third\glfw3.2\lib-vc2015\glfw3dll.lib" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Doc\开发计划\开发计划.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
