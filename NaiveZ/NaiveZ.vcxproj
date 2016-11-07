@@ -70,12 +70,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>D:\NaiveZ3D\NaiveZ\Third;D:\Projects\NaiveZ3D\NaiveZ\Third\glfw3.2\include;D:\Projects\NaiveZ3D\NaiveZ\Third\glew-2\include;D:\NaiveZ3D\NaiveZ\Third\glfw3.2\include;D:\NaiveZ3D\NaiveZ\Third\glew-2\include;$(IncludePath)</IncludePath>
+    <IncludePath>D:\Projects\NaiveZ3D\NaiveZ\Third;D:\NaiveZ3D\NaiveZ\Third;D:\Projects\NaiveZ3D\NaiveZ\Third\glfw3.2\include;D:\Projects\NaiveZ3D\NaiveZ\Third\glew-2\include;D:\NaiveZ3D\NaiveZ\Third\glfw3.2\include;D:\NaiveZ3D\NaiveZ\Third\glew-2\include;$(IncludePath)</IncludePath>
     <LibraryPath>D:\Projects\NaiveZ3D\NaiveZ\Third\glfw3.2\lib-vc2015;D:\Projects\NaiveZ3D\NaiveZ\Third\glew-2\lib\Release\Win32;D:\NaiveZ3D\NaiveZ\Third\glew-2\lib\Release\Win32;D:\NaiveZ3D\NaiveZ\Third\glfw3.2\lib-vc2015;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>D:\NaiveZ3D\NaiveZ\Third\glfw3.2\include;D:\NaiveZ3D\NaiveZ\Third\glew-2\include;D:\NaiveZ3D\NaiveZ\Third;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\NaiveZ3D\NaiveZ\Third\glfw3.2\lib-vc2015;D:\NaiveZ3D\NaiveZ\Third\glew-2\lib\Release\Win32;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\Projects\NaiveZ3D\NaiveZ\Third\glfw3.2\include;D:\Projects\NaiveZ3D\NaiveZ\Third\glew-2\include;D:\Projects\NaiveZ3D\NaiveZ\Third;D:\NaiveZ3D\NaiveZ\Third\glfw3.2\include;D:\NaiveZ3D\NaiveZ\Third\glew-2\include;D:\NaiveZ3D\NaiveZ\Third;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Projects\NaiveZ3D\NaiveZ\Third\glfw3.2\lib-vc2015;D:\Projects\NaiveZ3D\NaiveZ\Third\glew-2\lib\Release\Win32;D:\NaiveZ3D\NaiveZ\Third\glfw3.2\lib-vc2015;D:\NaiveZ3D\NaiveZ\Third\glew-2\lib\Release\Win32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -130,7 +130,10 @@
     <ClCompile Include="Core\GLRender\GLRenderSystem.cpp" />
     <ClCompile Include="Core\GLRender\GLShader.cpp" />
     <ClCompile Include="Core\GLRender\GLShaderMgr.cpp" />
+    <ClCompile Include="Core\Material\Material.cpp" />
+    <ClCompile Include="Core\Material\MaterialMgr.cpp" />
     <ClCompile Include="Core\Scene\Scene.cpp" />
+    <ClCompile Include="Core\Scene\SceneTree.cpp" />
     <ClCompile Include="File\IOBJFileMgr.cpp" />
     <ClCompile Include="File\Mesh.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -150,7 +153,10 @@
     <ClInclude Include="Core\GLRender\Include\GLShader.h" />
     <ClInclude Include="Core\GLRender\Include\GLShaderMgr.h" />
     <ClInclude Include="Core\GLRender\Include\GLViewPort.h" />
+    <ClInclude Include="Core\Material\Include\Material.h" />
+    <ClInclude Include="Core\Material\Include\MaterialMgr.h" />
     <ClInclude Include="Core\Scene\Include\Scene.h" />
+    <ClInclude Include="Core\Scene\Include\SceneTree.h" />
     <ClInclude Include="File\Include\Face.h" />
     <ClInclude Include="File\Include\IFileMgr.h" />
     <ClInclude Include="File\Include\IOBJFileMgr.h" />

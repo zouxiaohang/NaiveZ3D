@@ -77,6 +77,18 @@
     <Filter Include="Third\glm">
       <UniqueIdentifier>{cbc34076-3572-436a-94a9-c78baa315f4f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Core\Light">
+      <UniqueIdentifier>{30a95dd2-b6c1-4735-a695-bdf9ae4502ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Light\Include">
+      <UniqueIdentifier>{c466a9ca-7af1-4eda-9867-b77cf9a018db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Material">
+      <UniqueIdentifier>{3661cc37-3ca6-4b11-b19b-32872867ec74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Material\Include">
+      <UniqueIdentifier>{d55bae5e-5629-477f-b317-94341fda0078}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -124,6 +136,15 @@
     </ClCompile>
     <ClCompile Include="Math\Quaternion.cpp">
       <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Material\Material.cpp">
+      <Filter>Core\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Material\MaterialMgr.cpp">
+      <Filter>Core\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Scene\SceneTree.cpp">
+      <Filter>Core\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +222,15 @@
     </ClInclude>
     <ClInclude Include="Math\Include\Matrix.h">
       <Filter>Math\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Material\Include\Material.h">
+      <Filter>Core\Material\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Material\Include\MaterialMgr.h">
+      <Filter>Core\Material\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Scene\Include\SceneTree.h">
+      <Filter>Core\Scene\Include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

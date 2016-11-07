@@ -3,12 +3,13 @@
 #include <fstream>
 #include <iostream>
 
-#include "Include\IOBJFileMgr.h"
+#include "Include/IOBJFileMgr.h"
 #include "../Math/Include/Vector.h"
 #include "../Utils/Include/Constant.h"
 #include "../Utils/Include/Helper.h"
-#include "Include\Model.h"
-#include "Include\Face.h"
+#include "Include/Model.h"
+#include "Include/Face.h"
+#include "../Core/Material/Include/MaterialMgr.h"
 
 using namespace std;
 
@@ -46,6 +47,7 @@ namespace NaiveZ3D
 				string mtl;
 				line >> mtl;
 				model.SetMtl(mtl);
+				LoadMtl(mtl);
 			}
 			else if (tok == "usemtl")
 			{
@@ -116,5 +118,9 @@ namespace NaiveZ3D
 		}
 
 		return model;
+	}
+	void IOBJFileMgr::LoadMtl(const std::string & mtlName)
+	{
+		MaterialMgr::Instance().LoadMtl(mtlName);
 	}
 }
