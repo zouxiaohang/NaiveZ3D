@@ -24,6 +24,8 @@ namespace NaiveZ3D
 		bool CompileAndLink(const std::map<std::string, std::string>&);
 
 		void Use();
+		template<class T>
+		void SetUniformByName(std::string name, const T& value);
 
 		std::map<std::string, std::string> GetShaderSource()const { return mSource_; }
 		std::string GetShaderName()const { return mShaderName_; }
@@ -32,6 +34,8 @@ namespace NaiveZ3D
 		std::string GetCompileErrorInfo()const { return mCompileErrorInfo_; }
 		ShaderState GetLinkState()const { return mLinkState_; }
 		std::string GetLinkErrorInfo()const { return mLinkErrorInfo_; }
+	private:
+		void InitUnifrom();
 
 	private:
 		std::string mShaderName_;
@@ -41,5 +45,16 @@ namespace NaiveZ3D
 		std::string mCompileErrorInfo_;
 		ShaderState mLinkState_;
 		std::string mLinkErrorInfo_;
+
+		GLuint mMVPLoc_;
 	};
+
+	template<class T>
+	inline void Shader::SetUniformByName(std::string name, const T & value)
+	{
+		if (name == "MVP")
+		{
+			glUniformMatrix4fv(mMVPLoc_, 1, GL_FALSE, value);
+		}
+	}
 }

@@ -40,8 +40,15 @@ bool NaiveZ3D::GLRenderSystem::Init(Application* app)
 void NaiveZ3D::GLRenderSystem::Draw(GLfloat delta)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+
 	//暂时这么写
+	//TODO:重构
 	GLShaderMgr::Instance().UseShader("eyeball");
+	glm::mat4 transform;
+	transform = glm::translate(transform, glm::vec3(0.5f, -0.5f, 0.0f));
+	transform = glm::rotate(transform, (GLfloat)glfwGetTime() * 50.0f, glm::vec3(0.0f, 0.0f, 1.0f));
+	GLShaderMgr::Instance().SetShaderUniform("eyeball", "MVP", glm::value_ptr(transform));
 	DrawGLModel();
 }
 

@@ -2,6 +2,7 @@
 
 #include "File\Include\IOBJFileMgr.h"
 #include "Application\Include\Application.h"
+#include "Math\Include\Vector.h"
 
 using namespace std;
 
@@ -19,6 +20,7 @@ int main()
 	}
 	vector<string> objs = {"Res/Cube/cube.obj"};
 	app.LoadAndDraw(objs);
+	app.SetCamera(NaiveZ3D::Vector3(0, 0, 0), NaiveZ3D::Vector3(0, 0, 1));
 	app.Run();
 
 	//system("pause");

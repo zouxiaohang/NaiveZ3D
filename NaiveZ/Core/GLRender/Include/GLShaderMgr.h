@@ -15,10 +15,13 @@ namespace NaiveZ3D
 
 	public:
 		void UseShader(const std::string&);
+		template<class T>
+		void SetShaderUniform(const std::string& shaderName, const std::string& uniform, const T& value);
 
 	private:
 		void Init();
 		void LoadShaders();
+		Shader& GetShaderByName(const std::string& name);
 
 	private:
 		GLShaderMgr()
@@ -42,4 +45,11 @@ namespace NaiveZ3D
 	private:
 		ShaderCache mShaderCache_;
 	};
+
+	template<class T>
+	inline void GLShaderMgr::SetShaderUniform(const std::string & shaderName, const std::string & uniform, const T & value)
+	{
+		auto& shader = GetShaderByName(shaderName);
+		shader.SetUniformByName(uniform, value);
+	}
 }

@@ -120,6 +120,12 @@ namespace NaiveZ3D
 		}
 		mLinkState_ = ShaderState::SUCC;
 
+		InitUnifrom();
+
 		return true;
+	}
+	void Shader::InitUnifrom()
+	{
+		mMVPLoc_ = glGetUniformLocation(mProgram_, "MVP");
 	}
 }

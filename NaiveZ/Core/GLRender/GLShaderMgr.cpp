@@ -148,6 +148,11 @@ void NaiveZ3D::GLShaderMgr::LoadShaders()
 	}
 }
 
+NaiveZ3D::Shader & NaiveZ3D::GLShaderMgr::GetShaderByName(const std::string & name)
+{
+	return mShaderCache_[name];
+}
+
 void NaiveZ3D::GLShaderMgr::UseShader(const std::string &name)
 {
 	auto shader = mShaderCache_.find(name);

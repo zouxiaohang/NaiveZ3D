@@ -63,6 +63,11 @@ namespace NaiveZ3D
 		}
 	}
 
+	void Application::SetCamera(Vector3 pos, Vector3 target, Vector3 up, Vector3 right)
+	{
+		mCamera_ = Camera(pos, target, up, right);
+	}
+
 	void Application::Terminate()
 	{
 		glfwTerminate();
