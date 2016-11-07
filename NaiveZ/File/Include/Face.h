@@ -13,9 +13,12 @@ namespace NaiveZ3D
 		{
 			for (auto i = 0; i != face.size(); ++i)
 			{
-				mVertexIndex_.push_back(stoul(face[i][0]));
-				mTextureIndex_.push_back(stoul(face[i][1]));
-				mNormalIndex_.push_back(stoul(face[i][2]));
+				if (face[i][0] != "")
+					mVertexIndex_.push_back(stoul(face[i][0]));
+				if (face[i][1] != "")
+					mTextureIndex_.push_back(stoul(face[i][1]));
+				if (face[i][2] != "")
+					mNormalIndex_.push_back(stoul(face[i][2]));
 			}
 		}
 
