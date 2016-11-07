@@ -55,6 +55,18 @@ void NaiveZ3D::GLModel::Destroy()
 	glDeleteBuffers(mEBOBuffer_.size(), mEBOBuffer_.data());
 }
 
+void NaiveZ3D::GLModel::Draw()
+{
+	if (mEBOSizeBuffer_.empty())
+	{
+		DrawArrays();
+	}
+	else
+	{
+		DrawElements();
+	}
+}
+
 void NaiveZ3D::GLModel::DrawArrays()
 {
 	for (auto i = 0; i != mVAOBuffer_.size(); ++i)
@@ -63,7 +75,6 @@ void NaiveZ3D::GLModel::DrawArrays()
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		glBindVertexArray(vao);
 		
-		//glDrawArrays(GL_TRIANGLE_STRIP, 0, mGLVertexDataBufferBuffer_[i].size());
 		glDrawArrays(GL_TRIANGLES, 0, mGLVertexDataBufferBuffer_[i].size());
 
 		glBindVertexArray(0);
@@ -76,7 +87,7 @@ void NaiveZ3D::GLModel::DrawElements()
 	{
 		auto vao = mVAOBuffer_[i];
 		auto ebo = mEBOBuffer_[i];
-		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);//暂时设为线框模式
 
 		glBindVertexArray(vao);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);

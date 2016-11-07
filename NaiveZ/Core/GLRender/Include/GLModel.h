@@ -31,7 +31,9 @@ namespace NaiveZ3D
 		GLModel(const Model&);
 		
 		void Destroy();
+		void Draw();
 
+	private:
 		void DrawArrays();
 		void DrawElements();
 

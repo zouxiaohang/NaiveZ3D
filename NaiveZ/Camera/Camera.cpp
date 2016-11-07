@@ -1,21 +1,70 @@
-#include "Include\Camera.h"
+#include "Include/Camera.h"
+#include "../Math/Include/Utils.h"
 
-NaiveZ3D::Camera::Camera(Vector3 pos, Vector3 target, Vector3 up, Vector3 right)
-	:mPos_(pos),
-	mTarget_(target),
-	mUp_(up),
-	mRight_(right)
+namespace NaiveZ3D
 {
-	BuildViewTransform();
-}
+	Camera::Camera(GLMVec3 pos, GLMVec3 target, GLMVec3 up)
+		:mPos_(pos),
+		mTarget_(target),
+		mUp_(up)
+	{
+		BuildViewTransform();
+	}
+	void Camera::SetPerspectiveFov(float fovy, float aspect, float zn, float zf)
+	{
+		mFovy_ = fovy;
+		mAspect_ = aspect;
+		mZNear_ = zn;
+		mZFar_ = zf;
 
-void NaiveZ3D::Camera::BuildViewTransform()
-{
-	auto dir = mTarget_ - mPos_;
-	dir.normalize();
-	mUp_.normalize();
-	mRight_ = mUp_.crossProduct(dir);
-	mRight_.normalize();
-	mUp_ = dir.crossProduct(mRight_);
-	mUp_.normalize();
+		BuildProjTransform();
+	}
+	void Camera::SetFovy(float fovy)
+	{
+		mFovy_ = fovy;
+		BuildProjTransform();
+	}
+	void Camera::SetPos(GLMVec3 pos)
+	{
+		mPos_ = pos;
+		BuildViewTransform();
+	}
+	void Camera::SetTarget(GLMVec3 target)
+	{
+		mTarget_ = target;
+		BuildViewTransform();
+	}
+	void Camera::Translate(GLMVec3 trans)
+	{
+		mPos_ += trans;
+		BuildViewTransform();
+	}
+	void Camera::Rotate(float radians, Axis axis)
+	{
+		auto axisRotate = GLMVec3();
+		auto angle = RadianToAngle(radians);
+
+		if (Axis::X == axis)
+			axisRotate = GLMVec3(1, 0, 0);
+		else if (Axis::Y == axis)
+			axisRotate = GLMVec3(0, 1, 0);
+		else if (Axis::Z == axis)
+			axisRotate = GLMVec3(0, 0, 1);
+
+		mViewTransfrom_ = glm::rotate(mViewTransfrom_, angle, axisRotate);
+	}
+	void Camera::BuildViewTransform()
+	{
+		mUp_ = glm::normalize(mUp_);
+		auto dir = mTarget_ - mPos_;
+		dir = glm::normalize(dir);
+		mRight_ = glm::normalize(glm::cross(dir, mUp_));
+		mUp_ = glm::normalize(glm::cross(mRight_, dir));
+
+		mViewTransfrom_ = glm::lookAt(mPos_, mTarget_, mUp_);
+	}
+	void Camera::BuildProjTransform()
+	{
+		mProjTransform_ = glm::perspective(mFovy_, mAspect_, mZNear_, mZFar_);
+	}
 }

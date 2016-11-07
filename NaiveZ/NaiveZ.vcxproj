@@ -160,6 +160,7 @@
     <ClInclude Include="Math\Include\Quaternion.h" />
     <ClInclude Include="Math\Include\Utils.h" />
     <ClInclude Include="Math\Include\Vector.h" />
+    <ClInclude Include="Third\glm\glm_include.h" />
     <ClInclude Include="UniTest\IOBJFileMgrUniTest.h" />
     <ClInclude Include="UniTest\ShaderUniTest.h" />
     <ClInclude Include="UniTest\UniTest.h" />

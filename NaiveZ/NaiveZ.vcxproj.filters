@@ -71,6 +71,12 @@
     <Filter Include="Camera\Include">
       <UniqueIdentifier>{931b248f-5edc-4d74-b66f-333080cf83ae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Third">
+      <UniqueIdentifier>{f59db668-2d66-4b40-92a6-13886f0e1ebe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Third\glm">
+      <UniqueIdentifier>{cbc34076-3572-436a-94a9-c78baa315f4f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -187,10 +193,13 @@
     <ClInclude Include="Camera\Include\Camera.h">
       <Filter>Camera\Include</Filter>
     </ClInclude>
-    <ClInclude Include="Math\Include\Matrix.h">
-      <Filter>Math\Include</Filter>
+    <ClInclude Include="Third\glm\glm_include.h">
+      <Filter>Third\glm</Filter>
     </ClInclude>
     <ClInclude Include="Math\Include\Quaternion.h">
+      <Filter>Math\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Include\Matrix.h">
       <Filter>Math\Include</Filter>
     </ClInclude>
   </ItemGroup>

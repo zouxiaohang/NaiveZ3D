@@ -32,6 +32,7 @@ bool NaiveZ3D::GLRenderSystem::Init(Application* app)
 	SetViewPort(0, 0, width, height);
 	mViewPort_.Use();
 
+	//¿ªÆôÉî¶È²âÊÔ
 	glEnable(GL_DEPTH_TEST);
 
 	return true;
@@ -48,9 +49,10 @@ void NaiveZ3D::GLRenderSystem::Draw(GLfloat delta)
 	glm::mat4 model, view, projection;
 	model = glm::translate(model, glm::vec3(0, 0, -20));
 	model = glm::rotate(model, (GLfloat)glfwGetTime() * 1.0f, glm::vec3(0.0f, 1.0f, 0.0f));
-	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
-	projection = glm::perspective(45.0f, 1.0f * mApplication_->GetAppWidth() / mApplication_->GetAppHeight(), 0.1f, 1000.0f);
-	auto transform = projection * view * model;
+	//view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+	//projection = glm::perspective(45.0f, 1.0f * mApplication_->GetAppWidth() / mApplication_->GetAppHeight(), 0.1f, 1000.0f);
+	//auto transform = projection * view * model;
+	auto transform = mApplication_->GetCamera().GetVPTransform() * model;
 	GLShaderMgr::Instance().SetShaderUniform("eyeball", "MVP", transform);
 	DrawGLModel();
 }
@@ -88,7 +90,6 @@ void NaiveZ3D::GLRenderSystem::DrawGLModel()
 {
 	for (auto& model : mGLModelBuffer_)
 	{
-		//model.DrawArrays();
-		model.DrawElements();
+		model.Draw();
 	}
 }

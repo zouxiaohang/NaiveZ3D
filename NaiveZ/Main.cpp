@@ -2,7 +2,7 @@
 
 #include "File\Include\IOBJFileMgr.h"
 #include "Application\Include\Application.h"
-#include "Math\Include\Vector.h"
+#include "glm/glm_include.h"
 
 using namespace std;
 
@@ -25,7 +25,7 @@ int main()
 	auto ironman = "Res/IronMan/IronMan.obj";
 	vector<string> objs = { bunny };
 	app.LoadAndDraw(objs);
-	app.SetCamera(NaiveZ3D::Vector3(0, 0, 0), NaiveZ3D::Vector3(0, 0, 1));
+	app.SetCamera(GLMVec3(0, 0, -50), GLMVec3(0, 0, 1000), GLMVec3(0, 1, 0), 45.0f, 0.1f, 1000.0f);
 	app.Run();
 
 	//system("pause");
