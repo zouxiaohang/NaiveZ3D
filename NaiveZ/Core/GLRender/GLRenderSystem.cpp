@@ -32,7 +32,7 @@ bool NaiveZ3D::GLRenderSystem::Init(Application* app)
 	SetViewPort(0, 0, width, height);
 	mViewPort_.Use();
 
-	//glEnable(GL_DEPTH_TEST);
+	glEnable(GL_DEPTH_TEST);
 
 	return true;
 }
@@ -45,10 +45,12 @@ void NaiveZ3D::GLRenderSystem::Draw(GLfloat delta)
 	//暂时这么写
 	//TODO:重构
 	GLShaderMgr::Instance().UseShader("eyeball");
-	glm::mat4 transform;
-	transform = glm::translate(transform, glm::vec3(0.5f, -0.5f, 0.0f));
-	transform = glm::rotate(transform, (GLfloat)glfwGetTime() * 50.0f, glm::vec3(0.0f, 0.0f, 1.0f));
-	GLShaderMgr::Instance().SetShaderUniform("eyeball", "MVP", glm::value_ptr(transform));
+	glm::mat4 model, view, projection;
+	model = glm::rotate(model, (GLfloat)glfwGetTime() * 50.0f, glm::vec3(0.0f, 0.0f, 1.0f));
+	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+	projection = glm::perspective(45.0f, 1.0f * mApplication_->GetAppWidth() / mApplication_->GetAppHeight(), 0.1f, 100.0f);
+	auto transform = projection * view * model;
+	GLShaderMgr::Instance().SetShaderUniform("eyeball", "MVP", transform);
 	DrawGLModel();
 }
 

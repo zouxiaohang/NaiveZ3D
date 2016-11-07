@@ -54,7 +54,7 @@ namespace NaiveZ3D
 	{
 		if (name == "MVP")
 		{
-			glUniformMatrix4fv(mMVPLoc_, 1, GL_FALSE, value);
+			glUniformMatrix4fv(mMVPLoc_, 1, GL_FALSE, glm::value_ptr(value));
 		}
 	}
 }

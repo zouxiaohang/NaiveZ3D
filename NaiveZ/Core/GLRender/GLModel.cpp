@@ -50,6 +50,7 @@ void NaiveZ3D::GLModel::DrawArrays()
 		glBindVertexArray(vao);
 		
 		glDrawArrays(GL_TRIANGLE_STRIP, 0, mGLVertexDataBufferBuffer_[i].size());
+		glDrawArrays(GL_TRIANGLES, 0, mGLVertexDataBufferBuffer_[i].size());
 
 		glBindVertexArray(0);
 	}
