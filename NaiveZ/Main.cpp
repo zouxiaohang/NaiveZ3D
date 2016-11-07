@@ -18,7 +18,12 @@ int main()
 	{
 		app.Terminate();
 	}
-	vector<string> objs = {"Res/Cube/cube.obj"};
+
+	auto eyeball = "Res/EyeBall/eyeball.obj";
+	auto cube = "Res/Cube/cube.obj";
+	auto bunny = "Res/Bunny/bunny.obj";
+	auto ironman = "Res/IronMan/IronMan.obj";
+	vector<string> objs = { bunny };
 	app.LoadAndDraw(objs);
 	app.SetCamera(NaiveZ3D::Vector3(0, 0, 0), NaiveZ3D::Vector3(0, 0, 1));
 	app.Run();

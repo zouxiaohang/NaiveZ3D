@@ -46,9 +46,10 @@ void NaiveZ3D::GLRenderSystem::Draw(GLfloat delta)
 	//TODO:ÖØ¹¹
 	GLShaderMgr::Instance().UseShader("eyeball");
 	glm::mat4 model, view, projection;
-	model = glm::rotate(model, (GLfloat)glfwGetTime() * 50.0f, glm::vec3(0.0f, 0.0f, 1.0f));
+	model = glm::translate(model, glm::vec3(0, 0, -20));
+	model = glm::rotate(model, (GLfloat)glfwGetTime() * 1.0f, glm::vec3(0.0f, 1.0f, 0.0f));
 	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
-	projection = glm::perspective(45.0f, 1.0f * mApplication_->GetAppWidth() / mApplication_->GetAppHeight(), 0.1f, 100.0f);
+	projection = glm::perspective(45.0f, 1.0f * mApplication_->GetAppWidth() / mApplication_->GetAppHeight(), 0.1f, 1000.0f);
 	auto transform = projection * view * model;
 	GLShaderMgr::Instance().SetShaderUniform("eyeball", "MVP", transform);
 	DrawGLModel();
@@ -87,6 +88,7 @@ void NaiveZ3D::GLRenderSystem::DrawGLModel()
 {
 	for (auto& model : mGLModelBuffer_)
 	{
-		model.DrawArrays();
+		//model.DrawArrays();
+		model.DrawElements();
 	}
 }

@@ -33,10 +33,13 @@ namespace NaiveZ3D
 		void Destroy();
 
 		void DrawArrays();
+		void DrawElements();
 
 	private:
 		Buffer mVAOBuffer_;
 		Buffer mVBOBuffer_;
+		Buffer mEBOBuffer_;
+		std::vector<size_t> mEBOSizeBuffer_;
 		Buffer mProgramBuffer_;
 		GLVertexDataBufferBuffer mGLVertexDataBufferBuffer_;
 	};

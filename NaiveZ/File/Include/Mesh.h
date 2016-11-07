@@ -44,6 +44,8 @@ namespace NaiveZ3D
 		std::vector<Face> GetFaceBuffer()const { return mFaceBuffer_; }
 		size_t FaceBufferSize() const { return mFaceBuffer_.size(); }
 
+		std::vector<unsigned int> GetIndiceBuffer()const;
+
 		bool IsValid() const { return VertexBufferSize() != 0; }
 
 	private:

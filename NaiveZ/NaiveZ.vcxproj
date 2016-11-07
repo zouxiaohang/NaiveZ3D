@@ -73,6 +73,10 @@
     <IncludePath>D:\NaiveZ3D\NaiveZ\Third;D:\Projects\NaiveZ3D\NaiveZ\Third\glfw3.2\include;D:\Projects\NaiveZ3D\NaiveZ\Third\glew-2\include;D:\NaiveZ3D\NaiveZ\Third\glfw3.2\include;D:\NaiveZ3D\NaiveZ\Third\glew-2\include;$(IncludePath)</IncludePath>
     <LibraryPath>D:\Projects\NaiveZ3D\NaiveZ\Third\glfw3.2\lib-vc2015;D:\Projects\NaiveZ3D\NaiveZ\Third\glew-2\lib\Release\Win32;D:\NaiveZ3D\NaiveZ\Third\glew-2\lib\Release\Win32;D:\NaiveZ3D\NaiveZ\Third\glfw3.2\lib-vc2015;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>D:\NaiveZ3D\NaiveZ\Third\glfw3.2\include;D:\NaiveZ3D\NaiveZ\Third\glew-2\include;D:\NaiveZ3D\NaiveZ\Third;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\NaiveZ3D\NaiveZ\Third\glfw3.2\lib-vc2015;D:\NaiveZ3D\NaiveZ\Third\glew-2\lib\Release\Win32;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -98,10 +102,12 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>opengl32.lib;glew32s.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
