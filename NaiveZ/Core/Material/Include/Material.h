@@ -39,6 +39,7 @@ namespace NaiveZ3D
 			KsTexPtr_.reset();
 			reflTexPtr_.reset();
 		}
+		void ReadTexture(const std::string& name, const std::string& category);
 		std::string newmtl_;
 		float Ns_;	//反射指数exponent
 		Vector3 Ka_;//环境反射

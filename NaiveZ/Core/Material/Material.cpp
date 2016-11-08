@@ -12,3 +12,7 @@ void NaiveZ3D::Material::AddMtlData(MtlData && data)
 {
 	mMtlDataMap_[data.newmtl_] = move(data);
 }
+
+void NaiveZ3D::MtlData::ReadTexture(const std::string & name, const std::string & category)
+{
+}
