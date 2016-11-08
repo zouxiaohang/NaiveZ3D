@@ -132,10 +132,12 @@
     <ClCompile Include="Core\GLRender\GLShaderMgr.cpp" />
     <ClCompile Include="Core\Material\Material.cpp" />
     <ClCompile Include="Core\Material\MaterialMgr.cpp" />
+    <ClCompile Include="Core\Material\Texture.cpp" />
     <ClCompile Include="Core\Scene\Scene.cpp" />
     <ClCompile Include="Core\Scene\SceneTree.cpp" />
     <ClCompile Include="File\IOBJFileMgr.cpp" />
     <ClCompile Include="File\Mesh.cpp" />
+    <ClCompile Include="Logger\LoggerMgr.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Math\Matrix.cpp" />
     <ClCompile Include="Math\Quaternion.cpp" />
@@ -155,6 +157,7 @@
     <ClInclude Include="Core\GLRender\Include\GLViewPort.h" />
     <ClInclude Include="Core\Material\Include\Material.h" />
     <ClInclude Include="Core\Material\Include\MaterialMgr.h" />
+    <ClInclude Include="Core\Material\Include\Texture.h" />
     <ClInclude Include="Core\Scene\Include\Scene.h" />
     <ClInclude Include="Core\Scene\Include\SceneTree.h" />
     <ClInclude Include="File\Include\Face.h" />
@@ -162,6 +165,7 @@
     <ClInclude Include="File\Include\IOBJFileMgr.h" />
     <ClInclude Include="File\Include\Mesh.h" />
     <ClInclude Include="File\Include\Model.h" />
+    <ClInclude Include="Logger\Include\LoggerMgr.h" />
     <ClInclude Include="Math\Include\Matrix.h" />
     <ClInclude Include="Math\Include\Quaternion.h" />
     <ClInclude Include="Math\Include\Utils.h" />

@@ -24,6 +24,8 @@ namespace NaiveZ3D
 		{}
 		MaterialMgr(const MaterialMgr&);
 
+		void AddMaterial(Material &&m);
+
 	private:
 		bool mInited_;
 

@@ -10,6 +10,7 @@
 #include "Include/Model.h"
 #include "Include/Face.h"
 #include "../Core/Material/Include/MaterialMgr.h"
+#include "../UniTest/UniTest.h"
 
 using namespace std;
 
@@ -29,7 +30,9 @@ namespace NaiveZ3D
 		ifstream ifs(name);
 		if (!ifs)
 		{
-			cout << "Fail to open OBJ file->" + name;
+			UniTest::UniTest::SetConsoleColor(UniTest::UniTest::ConsoleColor::RED);
+			cout << "Fail to open OBJ file->" + name << endl;
+			UniTest::UniTest::SetConsoleColor();
 			return model;
 		}
 		model.SetModelName(name);
@@ -46,6 +49,8 @@ namespace NaiveZ3D
 			{
 				string mtl;
 				line >> mtl;
+				auto path = name.substr(0, name.rfind('/')+1);
+				mtl = path + mtl;
 				model.SetMtl(mtl);
 				LoadMtl(mtl);
 			}

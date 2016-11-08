@@ -95,6 +95,12 @@
     <Filter Include="Res\Bunny">
       <UniqueIdentifier>{1ff19e4e-2db3-46ef-82b4-945dbc31eae1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Logger">
+      <UniqueIdentifier>{792486f8-9fb0-437a-a682-5ef4cf1f4c83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logger\Include">
+      <UniqueIdentifier>{45913eba-1771-45e2-913a-b634350b2a32}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -151,6 +157,12 @@
     </ClCompile>
     <ClCompile Include="Core\Scene\SceneTree.cpp">
       <Filter>Core\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Logger\LoggerMgr.cpp">
+      <Filter>Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Material\Texture.cpp">
+      <Filter>Core\Material</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -237,6 +249,12 @@
     </ClInclude>
     <ClInclude Include="Core\Scene\Include\SceneTree.h">
       <Filter>Core\Scene\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger\Include\LoggerMgr.h">
+      <Filter>Logger\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Material\Include\Texture.h">
+      <Filter>Core\Material\Include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
