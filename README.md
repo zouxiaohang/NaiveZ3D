@@ -3,4 +3,4 @@
 
 
 
-![image{50x50}](https://github.com/zouxiaohang/NaiveZ3D/blob/master/NaiveZ/ScreenShot/bunny_wireframe.png)
+![image{30x30}](https://github.com/zouxiaohang/NaiveZ3D/blob/master/NaiveZ/ScreenShot/bunny_wireframe.png)
