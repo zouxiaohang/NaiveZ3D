@@ -89,6 +89,12 @@
     <Filter Include="Core\Material\Include">
       <UniqueIdentifier>{d55bae5e-5629-477f-b317-94341fda0078}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ScreenShot">
+      <UniqueIdentifier>{9a2521a1-03b4-4090-8c2c-7e5271bdca03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Res\Bunny">
+      <UniqueIdentifier>{1ff19e4e-2db3-46ef-82b4-945dbc31eae1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -257,5 +263,10 @@
     <Text Include="Doc\开发计划\开发计划.txt">
       <Filter>Doc\开发计划</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="ScreenShot\bunny_wireframe.png">
+      <Filter>ScreenShot</Filter>
+    </Image>
   </ItemGroup>
 </Project>

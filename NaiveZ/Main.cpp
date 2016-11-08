@@ -23,9 +23,9 @@ int main()
 	auto cube = "Res/Cube/cube.obj";
 	auto bunny = "Res/Bunny/bunny.obj";
 	auto ironman = "Res/IronMan/IronMan.obj";
-	vector<string> objs = { eyeball };
+	vector<string> objs = { cube };
 	app.LoadAndDraw(objs);
-	app.SetCamera(GLMVec3(0, 0, -50), GLMVec3(0, 0, 1000), GLMVec3(0, 1, 0), 45.0f, 0.1f, 1000.0f);
+	app.SetCamera(GLMVec3(0, 0, -50), GLMVec3(0, 0, 0), GLMVec3(0, 1, 0), 45.0f, 0.1f, 1000.0f);
 	app.Run();
 
 	//system("pause");

@@ -12,6 +12,7 @@ GLfloat gLastX, gLastY;
 GLfloat gYaw = -90.0f;
 GLfloat gPitch = 0.0f;
 GLfloat gFovy = 45.0f;
+GLfloat gCameraSpeed = 0.5f;
 
 void MouseCallback(GLFWwindow* window, double xpos, double ypos)
 {
@@ -19,51 +20,48 @@ void MouseCallback(GLFWwindow* window, double xpos, double ypos)
 	//{
 	//	auto x = app->GetAppWidth();
 	//	x /= 2;
-	//	LastX = app->GetAppWidth() / 2;
-	//	LastY = app->GetAppHeight() / 2;
+	//	gLastX = app->GetAppWidth() / 2;
+	//	gLastY = app->GetAppHeight() / 2;
 	//	IsFirstMouse = false;
 	//}
-	//auto xoffset = xpos - LastX;
-	//auto yoffset = LastY - ypos;
-	//LastX = xpos;
-	//LastY = ypos;
+	//auto xoffset = xpos - gLastX;
+	//auto yoffset = gLastY - ypos;
+	//gLastX = xpos;
+	//gLastY = ypos;
 	//GLfloat sensitivity = 0.05;
 	//xoffset *= sensitivity;
 	//yoffset *= sensitivity;
-	//yaw += xoffset;
-	//Pitch += yoffset;
+	//gYaw += xoffset;
+	//gPitch += yoffset;
 
-	//if (Pitch > 89.0f)
+	//if (gPitch > 89.0f)
 	//{
-	//	Pitch = 89.0f;
+	//	gPitch = 89.0f;
 	//	std::cout << "pitch 89" << std::endl;
 	//}
-	//if (Pitch < -89.0f)
+	//if (gPitch < -89.0f)
 	//{
-	//	Pitch = -89.0f;
+	//	gPitch = -89.0f;
 	//	std::cout << "pitch -89" << std::endl;
 	//}
 
 	//glm::vec3 front;
-	//front.x = cos(glm::radians(yaw)) * cos(glm::radians(Pitch));
-	//front.y = sin(glm::radians(Pitch));
-	//front.z = sin(glm::radians(yaw)) * cos(glm::radians(Pitch));
+	//front.x = cos(glm::radians(gYaw)) * cos(glm::radians(gPitch));
+	//front.y = sin(glm::radians(gPitch));
+	//front.z = sin(glm::radians(gYaw)) * cos(glm::radians(gPitch));
 	//app->GetCamera().SetTarget(glm::normalize(front));
 }
 void ScrollCallback(GLFWwindow* window, double xoffset, double yoffset)
 {
-	//if (gFovy >= 1.0f && gFovy <= 45.0f)
-	//	gFovy -= yoffset*0.1;
-	//if (gFovy <= 1.0f)
-	//	gFovy = 1.0f;
-	//if (gFovy >= 45.0f)
-	//	gFovy = 45.0f;
-	//std::cout << gFovy << std::endl;
-	//app->GetCamera().SetFovy(gFovy);
+	auto& camera = app->GetCamera();
+	auto cameraPos = camera.GetPos();
+	auto cameraUp = camera.GetUpDir();
+
+	cameraPos += (float)yoffset * gCameraSpeed * cameraUp;
+	camera.SetPos(cameraPos);
 }
 void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
-	GLfloat cameraSpeed = 0.5f;
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GL_TRUE);
 
@@ -72,13 +70,13 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
 	auto cameraFront = glm::normalize(camera.GetTarget() - cameraPos);
 
 	if (key == GLFW_KEY_W)
-		cameraPos += cameraSpeed * cameraFront;
+		cameraPos += gCameraSpeed * cameraFront;
 	if (key == GLFW_KEY_S)
-		cameraPos -= cameraSpeed * cameraFront;
+		cameraPos -= gCameraSpeed * cameraFront;
 	if (key == GLFW_KEY_A)
-		cameraPos -= camera.GetRightDir() * cameraSpeed;
+		cameraPos -= camera.GetRightDir() * gCameraSpeed;
 	if (key == GLFW_KEY_D)
-		cameraPos += camera.GetRightDir() * cameraSpeed;
+		cameraPos += camera.GetRightDir() * gCameraSpeed;
 
 	camera.SetPos(cameraPos);
 }

@@ -185,6 +185,9 @@
   <ItemGroup>
     <Text Include="Doc\开发计划\开发计划.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="ScreenShot\bunny_wireframe.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
