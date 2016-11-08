@@ -44,7 +44,11 @@ namespace NaiveZ3D
 		std::vector<Face> GetFaceBuffer()const { return mFaceBuffer_; }
 		size_t FaceBufferSize() const { return mFaceBuffer_.size(); }
 
+
+		//下面三个函数是将Mesh内的数据变换为Opengl绘制所需的数据
 		std::vector<unsigned int> GetIndiceBuffer()const;
+		std::vector<Vector3> GetVeretxBuffer()const;
+		std::vector<TextureCoord> GetTexCoordBuffer()const;
 
 		bool IsValid() const { return VertexBufferSize() != 0; }
 
@@ -55,5 +59,9 @@ namespace NaiveZ3D
 		std::vector<Normal> mNormalBuffer_;
 		std::vector<Face> mFaceBuffer_;
 		std::vector<TextureCoord> mTextureCoordBuffer_;
+
+		mutable std::vector<Vector3> mVertexCache_;//缓存
+		mutable std::vector<unsigned int> mIndiceCache_;//缓存
+		mutable std::vector<TextureCoord> mTextureCoordCache_;//缓存
 	};
 }

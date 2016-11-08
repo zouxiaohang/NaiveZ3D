@@ -101,12 +101,6 @@
     <Filter Include="Logger\Include">
       <UniqueIdentifier>{45913eba-1771-45e2-913a-b634350b2a32}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Third\SOIL">
-      <UniqueIdentifier>{a69a0c2d-bdb2-4409-b6f6-d37215b5cc6e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Third\SOIL\SOIL">
-      <UniqueIdentifier>{b979f20a-60b5-450d-bda3-08c830a04e9c}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -262,9 +256,6 @@
     <ClInclude Include="Core\Material\Include\Texture.h">
       <Filter>Core\Material\Include</Filter>
     </ClInclude>
-    <ClInclude Include="Third\SOIL\SOIL\SOIL.h">
-      <Filter>Third\SOIL\SOIL</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Res\EyeBall\eyeball.mtl">
@@ -295,10 +286,5 @@
     <Image Include="ScreenShot\bunny_wireframe.png">
       <Filter>ScreenShot</Filter>
     </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Library Include="Third\SOIL\SOIL\SOIL.lib">
-      <Filter>Third\SOIL\SOIL</Filter>
-    </Library>
   </ItemGroup>
 </Project>

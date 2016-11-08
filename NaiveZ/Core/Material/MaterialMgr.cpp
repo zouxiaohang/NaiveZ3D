@@ -32,13 +32,14 @@ void NaiveZ3D::MaterialMgr::LoadMtl(const std::string & mtlName)
 		return;
 	}
 	string line;
-	string tok;
 	MtlData mtlData;
 	Material material(mtlName);
+	string path = mtlName.substr(0, mtlName.rfind('/') + 1);
 
 	while (getline(ifs, line))
 	{
 		stringstream ss(line);
+		string tok;
 		ss >> tok;
 		if (tok == "newmtl")
 		{
@@ -107,6 +108,7 @@ void NaiveZ3D::MaterialMgr::LoadMtl(const std::string & mtlName)
 		{
 			string tex;
 			ss >> tex;
+			tex = path +tex;
 			mtlData.ReadTexture(tex, tok);
 		}
 		else if (tok == "refl")

@@ -22,6 +22,19 @@ namespace NaiveZ3D
 		}
 
 		GLfloat x_, y_, z_;
+
+		//GLVertexData(const Vector3& v, const Vector2& tex)
+		//{
+		//	x_ = v.x_;
+		//	y_ = v.y_;
+		//	z_ = v.z_;
+
+		//	s_ = tex.x_;
+		//	t_ = tex.y_;
+		//}
+
+		//GLfloat x_, y_, z_;
+		//GLfloat s_, t_;
 	};
 	using GLVertexDataBufferBuffer = std::vector<std::vector<GLVertexData>>;
 
