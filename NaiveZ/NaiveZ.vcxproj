@@ -71,7 +71,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>D:\Projects\NaiveZ3D\NaiveZ\Third;D:\NaiveZ3D\NaiveZ\Third;D:\Projects\NaiveZ3D\NaiveZ\Third\glfw3.2\include;D:\Projects\NaiveZ3D\NaiveZ\Third\glew-2\include;D:\NaiveZ3D\NaiveZ\Third\glfw3.2\include;D:\NaiveZ3D\NaiveZ\Third\glew-2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\Projects\NaiveZ3D\NaiveZ\Third\glfw3.2\lib-vc2015;D:\Projects\NaiveZ3D\NaiveZ\Third\glew-2\lib\Release\Win32;D:\NaiveZ3D\NaiveZ\Third\glew-2\lib\Release\Win32;D:\NaiveZ3D\NaiveZ\Third\glfw3.2\lib-vc2015;$(LibraryPath)</LibraryPath>
+    <LibraryPath>D:\NaiveZ3D\NaiveZ\Third\SOIL\SOIL;D:\Projects\NaiveZ3D\NaiveZ\Third\glfw3.2\lib-vc2015;D:\Projects\NaiveZ3D\NaiveZ\Third\glew-2\lib\Release\Win32;D:\NaiveZ3D\NaiveZ\Third\glew-2\lib\Release\Win32;D:\NaiveZ3D\NaiveZ\Third\glfw3.2\lib-vc2015;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>D:\Projects\NaiveZ3D\NaiveZ\Third\glfw3.2\include;D:\Projects\NaiveZ3D\NaiveZ\Third\glew-2\include;D:\Projects\NaiveZ3D\NaiveZ\Third;D:\NaiveZ3D\NaiveZ\Third\glfw3.2\include;D:\NaiveZ3D\NaiveZ\Third\glew-2\include;D:\NaiveZ3D\NaiveZ\Third;$(IncludePath)</IncludePath>
@@ -85,7 +85,7 @@
       <PreprocessorDefinitions>GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32s.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -171,6 +171,7 @@
     <ClInclude Include="Math\Include\Utils.h" />
     <ClInclude Include="Math\Include\Vector.h" />
     <ClInclude Include="Third\glm\glm_include.h" />
+    <ClInclude Include="Third\SOIL\SOIL\SOIL.h" />
     <ClInclude Include="UniTest\IOBJFileMgrUniTest.h" />
     <ClInclude Include="UniTest\ShaderUniTest.h" />
     <ClInclude Include="UniTest\UniTest.h" />
@@ -191,6 +192,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="ScreenShot\bunny_wireframe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Third\SOIL\SOIL\SOIL.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
