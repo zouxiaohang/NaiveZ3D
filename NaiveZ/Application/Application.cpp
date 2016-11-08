@@ -159,7 +159,7 @@ namespace NaiveZ3D
 		auto loader = IOBJFileMgr();
 		for (auto file : objFiles)
 		{
-			auto model = loader.Load(file);
+			const auto& model = loader.Load(file);
 			mModelMap_[model.GetModelName()] = model;
 		}
 		mGLRenderSystemPtr_->CommitModel(mModelMap_);

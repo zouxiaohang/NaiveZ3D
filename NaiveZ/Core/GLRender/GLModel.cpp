@@ -40,7 +40,7 @@ NaiveZ3D::GLModel::GLModel(const Model &model)
 		{
 			vdb.emplace_back(data);
 		}
-
+		
 		glBindVertexArray(vao);
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
