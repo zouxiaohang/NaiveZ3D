@@ -36,6 +36,8 @@ namespace NaiveZ3D
 		void SetTextureCoordBuffer(const std::vector<TextureCoord>& tb) { mTextureCoordBuffer_ = tb; }
 		const std::vector<TextureCoord>& GetTextureCoordBuffer()const { return mTextureCoordBuffer_; }
 
+		bool UseTex()const { return !mTextureCoordBuffer_.empty(); }
+
 	private:
 		std::string mModelName_;
 		std::string mMtl_;

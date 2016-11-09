@@ -45,6 +45,10 @@ namespace NaiveZ3D
 		const std::vector<TextureCoord>& GenTexCoordBuffer(const Model&)const;
 
 	private:
+		//由于使用了纹理，因此一次性生成全部数据，并缓存
+		void BuildDataUseTex(const Model& model)const;
+
+	private:
 		std::string mName_;
 		std::string mMtlName_;
 		std::vector<Face> mFaceBuffer_;
@@ -56,5 +60,6 @@ namespace NaiveZ3D
 		mutable std::vector<Vector3> mVertexCache_;//缓存
 		mutable std::vector<unsigned int> mIndiceCache_;//缓存
 		mutable std::vector<TextureCoord> mTextureCoordCache_;//缓存
+		mutable std::vector<Vector3> mNormalCache_;//缓存
 	};
 }
