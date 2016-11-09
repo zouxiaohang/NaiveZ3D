@@ -6,14 +6,13 @@ using namespace std;
 
 namespace NaiveZ3D
 {
-	const std::vector<unsigned int>& Mesh::GetIndiceBuffer()const
+	const std::vector<unsigned int>& Mesh::GenIndiceBuffer(const Model& model)const
 	{
 		if (!mIndiceCache_.empty())
 		{
 			return mIndiceCache_;
 		}
 		std::vector<unsigned int> indice;
-		//if  Ïß¿òÄ£Ê½
 		for (const auto& face : mFaceBuffer_)
 		{
 			const auto& ib = face.mVertexIndex_;
@@ -34,31 +33,10 @@ namespace NaiveZ3D
 				indice.emplace_back(ib[3]);
 			}
 		}
-		//else
-		//for (const auto& face : mFaceBuffer_)
-		//{
-		//	const auto& ib = face.mTextureIndex_;
-		//	if (ib.size() == 3)
-		//	{
-		//		//1¡¢2¡¢3
-		//		indice.insert(indice.end(), ib.begin(), ib.end());
-		//	}
-		//	else if (ib.size() == 4)
-		//	{
-		//		//1¡¢2¡¢3
-		//		indice.emplace_back(ib[0]);
-		//		indice.emplace_back(ib[1]);
-		//		indice.emplace_back(ib[2]);
-		//		//1¡¢3¡¢4
-		//		indice.emplace_back(ib[0]);
-		//		indice.emplace_back(ib[2]);
-		//		indice.emplace_back(ib[3]);
-		//	}
-		//}
 		mIndiceCache_ = move(indice);
 		return mIndiceCache_;
 	}
-	const std::vector<Vector3>& Mesh::GetVertexCache()const
+	const std::vector<Vector3>& Mesh::GenVertexBuffer(const Model& model)const
 	{
 		if (!mVertexCache_.empty())
 		{
@@ -72,7 +50,7 @@ namespace NaiveZ3D
 			{
 				if (added.count(i) == 0)
 				{
-					const auto& v = mModel_->GetVertexBuffer();
+					const auto& v = model.GetVertexBuffer();
 					vertex.emplace_back(v[i]);
 					added.insert(i);
 				}
@@ -90,22 +68,22 @@ namespace NaiveZ3D
 		mVertexCache_ = move(vertex);
 		return mVertexCache_;
 	}
-	const std::vector<TextureCoord>& Mesh::GetTexCoordBuffer() const
+	const std::vector<TextureCoord>& Mesh::GenTexCoordBuffer(const Model& model) const
 	{
 		if (!mTextureCoordCache_.empty())
 		{
 			return mTextureCoordCache_;
 		}
-		std::vector<TextureCoord> tex(mFaceBuffer_.size() * mFaceBuffer_[0].mTextureIndex_.size());
-		int index = 0;
-		for (const auto& face : mFaceBuffer_)
-		{
-			for (auto i : face.mTextureIndex_)
-			{
-				tex[index++] = mTextureCoordBuffer_[i];
-			}
-		}
-		mTextureCoordCache_ = move(tex);
+		//std::vector<TextureCoord> tex(mFaceBuffer_.size() * mFaceBuffer_[0].mTextureIndex_.size());
+		//int index = 0;
+		//for (const auto& face : mFaceBuffer_)
+		//{
+		//	for (auto i : face.mTextureIndex_)
+		//	{
+		//		tex[index++] = model.GetTextureCoordBuffer[i];
+		//	}
+		//}
+		//mTextureCoordCache_ = move(tex);
 		return mTextureCoordCache_;
 	}
 }

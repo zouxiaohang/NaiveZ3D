@@ -64,14 +64,14 @@ namespace NaiveZ3D
 				{
 					mesh.SetName(meshName);
 					mesh.SetMtl(useMtl);
-					mesh.SetVertexBuffer(vBuffer);
-					mesh.SetTextureCoordBuffer(tcBuffer);
-					mesh.SetNormalBuffer(nBuffer);
+					//mesh.SetVertexBuffer(vBuffer);
+					//mesh.SetTextureCoordBuffer(tcBuffer);
+					//mesh.SetNormalBuffer(nBuffer);
 					mesh.SetFaceBuffer(fBuffer);
 					model.AddMesh(mesh);
-					vBuffer.clear();
-					tcBuffer.clear();
-					nBuffer.clear();
+					//vBuffer.clear();
+					//tcBuffer.clear();
+					//nBuffer.clear();
 					fBuffer.clear();
 				}
 				line >> meshName;
@@ -115,11 +115,14 @@ namespace NaiveZ3D
 		{
 			mesh.SetName(meshName);
 			mesh.SetMtl(useMtl);
-			mesh.SetVertexBuffer(vBuffer);
-			mesh.SetTextureCoordBuffer(tcBuffer);
-			mesh.SetNormalBuffer(nBuffer);
+			//mesh.SetVertexBuffer(vBuffer);
+			//mesh.SetTextureCoordBuffer(tcBuffer);
+			//mesh.SetNormalBuffer(nBuffer);
 			mesh.SetFaceBuffer(fBuffer);
 			model.AddMesh(mesh);
+			model.SetVertexBuffer(move(vBuffer));
+			model.SetTextureCoordBuffer(move(tcBuffer));
+			model.SetNormalBuffer(move(nBuffer));
 		}
 
 		return model;
