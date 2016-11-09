@@ -24,10 +24,10 @@ NaiveZ3D::GLModel::GLModel(const Model &model)
 		auto ebo = mEBOBuffer_[i];//element buffer object
 
 		auto& vdb = mGLVertexDataBufferBuffer_[i];	//GLVertexData buffer
-		const auto& edb = mesh.GenIndiceBuffer(model);	//element data buffer
+		const auto& edb = mesh.GenIndiceBuffer(model);	//element data buffer for this mesh
 		mEBOSizeBuffer_[i] = edb.size();
-		const auto& tex = mesh.GenTexCoordBuffer(model);	//texcoord data buffer
-		const auto& vb = mesh.GenVertexBuffer(model);	//vertex data buffer
+		const auto& tex = mesh.GenTexCoordBuffer(model);	//texcoord data buffer for this mesh
+		const auto& vb = mesh.GenVertexBuffer(model);	//vertex data buffer for this mesh
 
 		//assert(tex.size() == vb.size());
 		//将mesh里面的元数据传入到顶点buffer中

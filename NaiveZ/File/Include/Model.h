@@ -41,8 +41,8 @@ namespace NaiveZ3D
 		std::string mMtl_;
 		std::vector<Mesh> mMeshVector_;
 
-		std::vector<Vector3> mVertexBuffer_;
-		std::vector<Normal> mNormalBuffer_;
-		std::vector<TextureCoord> mTextureCoordBuffer_;
+		std::vector<Vector3> mVertexBuffer_;			//全局数据
+		std::vector<Normal> mNormalBuffer_;				//全局数据
+		std::vector<TextureCoord> mTextureCoordBuffer_;	//全局数据
 	};
 }

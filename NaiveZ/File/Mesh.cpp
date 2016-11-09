@@ -46,9 +46,9 @@ namespace NaiveZ3D
 		set<int> added;
 		for (const auto& face : mFaceBuffer_)
 		{
-			for (auto i : face.mTextureIndex_)
+			for (auto i : face.mVertexIndex_)
 			{
-				if (added.count(i) == 0)
+				if (added.count(i) == 0 || 1)
 				{
 					const auto& v = model.GetVertexBuffer();
 					vertex.emplace_back(v[i]);
@@ -56,15 +56,6 @@ namespace NaiveZ3D
 				}
 			}
 		}
-		/*std::vector<Vector3> vertex(mFaceBuffer_.size() * mFaceBuffer_[0].mVertexIndex_.size());
-		int index = 0;
-		for (const auto& face : mFaceBuffer_)
-		{
-			for (auto i : face.mVertexIndex_)
-			{
-				vertex[index++] = mVertexBuffer_[i];
-			}
-		}*/
 		mVertexCache_ = move(vertex);
 		return mVertexCache_;
 	}

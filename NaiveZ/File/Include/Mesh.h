@@ -44,8 +44,6 @@ namespace NaiveZ3D
 		const std::vector<Vector3>& GenVertexBuffer(const Model&)const;
 		const std::vector<TextureCoord>& GenTexCoordBuffer(const Model&)const;
 
-		//bool IsValid() const { return VertexBufferSize() != 0; }
-
 	private:
 		std::string mName_;
 		std::string mMtlName_;
