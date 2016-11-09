@@ -51,7 +51,7 @@ NaiveZ3D::GLModel::GLModel(const Model &model)
 			glBufferData(GL_ARRAY_BUFFER, sizeof(GLVertexData)*vdb.size(), (const GLvoid*)&vdb[0], GL_STATIC_DRAW);
 			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*5, (GLvoid*)0);
 			glEnableVertexAttribArray(0);
-			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*5, (GLvoid*)(3*sizeof(GLfloat)));
+			glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*5, (GLvoid*)(3*sizeof(GLfloat)));
 			glEnableVertexAttribArray(1);
 		}
 		else
@@ -127,7 +127,7 @@ void NaiveZ3D::GLModel::DrawElements()
 		{
 			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);//暂时设为线框模式
 		}
-
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);//暂时设为线框模式
 		glBindVertexArray(vao);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
 		

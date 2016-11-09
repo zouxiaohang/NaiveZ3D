@@ -143,7 +143,7 @@ namespace NaiveZ3D
 					r.v = v; r.t = t; r.n = n;
 					auto rs = r.toString();
 					test.push_back(rs);
-					//新增的不对 0 1 2 2 1 5(3)
+					//新增的不对
 					indice.push_back(GetIndice(rs, test));
 					if (added.count(rs) == 0)
 					{
