@@ -5,6 +5,7 @@ using namespace std;
 #include "include/GLModel.h"
 #include "../../../File/Include/Model.h"
 #include "../Material/Include/MaterialMgr.h"
+#include "Include/GLShaderMgr.h"
 
 NaiveZ3D::GLModel::GLModel(const Model &model)
 {
@@ -87,23 +88,17 @@ void NaiveZ3D::GLModel::DrawArrays()
 	for (auto i = 0; i != mVAOBuffer_.size(); ++i)
 	{
 		auto vao = mVAOBuffer_[i];
-		//auto ebo = mEBOBuffer_[i];
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		glBindVertexArray(vao);
-		//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
 
 		glDrawArrays(GL_TRIANGLES, 0, mGLVertexDataBufferBuffer_[i].size());
 
-		//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 		glBindVertexArray(0);
 	}
 }
 
 void NaiveZ3D::GLModel::DrawElements()
 {
-	assert(mMtlName_ != "");
-	const auto& material = MaterialMgr::Instance().GetMaterial(mMtlName_);
-
 	for (auto i = 0; i != mVAOBuffer_.size(); ++i)
 	{
 		auto vao = mVAOBuffer_[i];
@@ -113,13 +108,17 @@ void NaiveZ3D::GLModel::DrawElements()
 		if (!mUseTex_)//model不使用纹理则渲染为线框模式
 		{
 			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);//暂时设为线框模式
+			GLShaderMgr::Instance().SetUniformFIByName("UseTex", 0);
 		}
 		else
 		{
+			assert(mMtlName_ != "");
+			const auto& material = MaterialMgr::Instance().GetMaterial(mMtlName_);
 			auto& usemtl = mUseMtlBuffer_[i];
 			material.Use(usemtl);
+			GLShaderMgr::Instance().SetUniformFIByName("UseTex", 1);
 		}
-		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);//暂时设为线框模式
+
 		glBindVertexArray(vao);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
 		

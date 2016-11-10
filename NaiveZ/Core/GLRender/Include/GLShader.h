@@ -51,6 +51,7 @@ namespace NaiveZ3D
 
 		GLuint mMVPLoc_;
 		GLuint mKdSampler2D_;
+		GLboolean mUseTex_;
 	};
 
 	template<class T>
@@ -67,6 +68,10 @@ namespace NaiveZ3D
 		if (name == "kdSampler2D")
 		{
 			glUniform1i(mKdSampler2D_, value);
+		}
+		else if (name == "UseTex")
+		{
+			glUniform1i(mUseTex_, value);
 		}
 	}
 }

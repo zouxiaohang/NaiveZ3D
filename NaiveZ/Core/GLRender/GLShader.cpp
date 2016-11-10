@@ -10,8 +10,8 @@ namespace NaiveZ3D
 {
 	Shader::Shader(const std::string& name)
 	:mShaderName_(name),
-		mCompileState_(ShaderState::NONE),
-		mLinkState_(ShaderState::NONE)
+	mCompileState_(ShaderState::NONE),
+	mLinkState_(ShaderState::NONE)
 	{}
 
 	void Shader::Destroy()
@@ -128,5 +128,6 @@ namespace NaiveZ3D
 	{
 		mMVPLoc_ = glGetUniformLocation(mProgram_, "MVP");
 		mKdSampler2D_ = glGetUniformLocation(mProgram_, "kdSampler2D");
+		mUseTex_ = glGetUniformLocation(mProgram_, "UseTex");
 	}
 }
