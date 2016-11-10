@@ -30,44 +30,24 @@ NaiveZ3D::GLModel::GLModel(const Model &model)
 		const auto& edb = mesh.GenIndiceBuffer(model);	//element data buffer for this mesh
 		mEBOSizeBuffer_[i] = edb.size();
 		const auto& vb = mesh.GenVertexBuffer(model);	//vertex data buffer for this mesh
+		const auto& tex = mesh.GenTexCoordBuffer(model);	//texcoord data buffer for this mesh
+		assert(tex.size() == vb.size());
 
 		glBindVertexArray(vao);
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
 
-		if (mUseTex_)//Model需要使用纹理属性
+		for (auto index = 0; index != vb.size(); ++index)
 		{
-			const auto& tex = mesh.GenTexCoordBuffer(model);	//texcoord data buffer for this mesh
-			assert(tex.size() == vb.size());
-
-			//将mesh里面的元数据传入到顶点buffer中
-			for (auto index = 0; index != vb.size(); ++index)
-			{
-				auto data = GLVertexData(vb[index], tex[index]);
-				vdb.emplace_back(data);
-			}
-
-			// vertex buffer
-			glBufferData(GL_ARRAY_BUFFER, sizeof(GLVertexData)*vdb.size(), (const GLvoid*)&vdb[0], GL_STATIC_DRAW);
-			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*5, (GLvoid*)0);
-			glEnableVertexAttribArray(0);
-			glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*5, (GLvoid*)(3*sizeof(GLfloat)));
-			glEnableVertexAttribArray(1);
+			auto data = GLVertexData(vb[index], tex[index]);
+			vdb.emplace_back(data);
 		}
-		else
-		{
-			vector<Vector3> vData(vb.size());
-			size_t i = 0;
-			for (const auto& data : vb)
-			{
-				//vdb.emplace_back(data);
-				vData[i++] = data;
-			}
-			// vertex buffer
-			glBufferData(GL_ARRAY_BUFFER, sizeof(Vector3)*vData.size(), (const GLvoid*)&vData[0], GL_STATIC_DRAW);
-			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 3, (GLvoid*)0);
-			glEnableVertexAttribArray(0);
-		}
+		// vertex buffer
+		glBufferData(GL_ARRAY_BUFFER, sizeof(GLVertexData)*vdb.size(), (const GLvoid*)&vdb[0], GL_STATIC_DRAW);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*5, (GLvoid*)0);
+		glEnableVertexAttribArray(0);
+		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*5, (GLvoid*)(3*sizeof(GLfloat)));
+		glEnableVertexAttribArray(1);
 
 		//element buffer
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint)*edb.size(), edb.data(), GL_STATIC_DRAW);

@@ -164,6 +164,9 @@
     <ClCompile Include="Core\Material\Texture.cpp">
       <Filter>Core\Material</Filter>
     </ClCompile>
+    <ClCompile Include="File\Include\Model.cpp">
+      <Filter>File</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="File\Include\IFileMgr.h">

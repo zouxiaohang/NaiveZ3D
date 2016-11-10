@@ -94,7 +94,14 @@ namespace NaiveZ3D
 		{
 			return mTextureCoordCache_;
 		}
-		BuildDataUseTex(model);
+		if (!model.UseTex())
+		{
+			mTextureCoordCache_.resize(model.GetVertexBuffer().size());
+		}
+		else
+		{
+			BuildDataUseTex(model);
+		}
 		return mTextureCoordCache_;
 	}
 	void Mesh::BuildDataUseTex(const Model& model)const
@@ -127,8 +134,11 @@ namespace NaiveZ3D
 		//create vertex data
 		std::vector<int> vi, ti, ni;
 		record r, r1;
-		set<string> added;
-		std::vector<string> test;
+		//set<string> added;
+		//std::vector<string> test;
+		auto& buildMap = model.GetBuildMap();
+		auto& re = model.GetRecord();
+
 		for (const auto& face : mFaceBuffer_)
 		{
 			const auto& vb = face.mVertexIndex_;
@@ -142,18 +152,24 @@ namespace NaiveZ3D
 					v = vb[i]; t = tb[i]; n = nb[i];
 					r.v = v; r.t = t; r.n = n;
 					auto rs = r.toString();
-					test.push_back(rs);
 					//新增的不对 0 1 2 2 1 5(3)
-					indice.push_back(GetIndice(rs, test));
-					if (added.count(rs) == 0)
+					//indice.push_back(GetIndice(rs, test));
+					//if (added.count(rs) == 0)
+					if(!model.HasIndice(rs))
 					{
-						added.insert(rs);
+						buildMap[rs] = re;
+						indice.push_back(re);
+						++re;
+						//added.insert(rs);
 						vi.emplace_back(v);
 						ti.emplace_back(t);
 						ni.emplace_back(n);
 						++gCurIndex;
 					}
-
+					else
+					{
+						indice.push_back(buildMap[rs]);
+					}
 				}
 			}
 		}

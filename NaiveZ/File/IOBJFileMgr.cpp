@@ -37,9 +37,10 @@ namespace NaiveZ3D
 		}
 		model.SetModelName(name);
 		string buf;
-		string tok;
+		
 		while (getline(ifs, buf))
 		{
+			string tok;
 			stringstream line(buf);
 			line >> tok;
 			if (tok == "#")

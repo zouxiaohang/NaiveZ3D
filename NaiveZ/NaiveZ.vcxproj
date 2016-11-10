@@ -135,6 +135,7 @@
     <ClCompile Include="Core\Material\Texture.cpp" />
     <ClCompile Include="Core\Scene\Scene.cpp" />
     <ClCompile Include="Core\Scene\SceneTree.cpp" />
+    <ClCompile Include="File\Include\Model.cpp" />
     <ClCompile Include="File\IOBJFileMgr.cpp" />
     <ClCompile Include="File\Mesh.cpp" />
     <ClCompile Include="Logger\LoggerMgr.cpp" />
