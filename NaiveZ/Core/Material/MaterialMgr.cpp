@@ -6,6 +6,7 @@ using namespace std;
 
 #include "Include/MaterialMgr.h"
 #include "../../UniTest/UniTest.h"
+#include "SOIL/SOIL/soil.h"
 
 NaiveZ3D::MaterialMgr & NaiveZ3D::MaterialMgr::Instance()
 {
@@ -41,6 +42,8 @@ void NaiveZ3D::MaterialMgr::LoadMtl(const std::string & mtlName)
 		stringstream ss(line);
 		string tok;
 		ss >> tok;
+		if (tok == "#")
+			continue;
 		if (tok == "newmtl")
 		{
 			if (mtlData.newmtl_ != "")
@@ -130,4 +133,27 @@ NaiveZ3D::Material & NaiveZ3D::MaterialMgr::GetMaterial(const std::string & mtl)
 void NaiveZ3D::MaterialMgr::AddMaterial(Material && material)
 {
 	mMaterialCache_[material.GetName()] = move(material);
+}
+
+bool NaiveZ3D::MaterialMgr::HasImageData(const std::string &name) const
+{
+	return mImageDataCache_.find(name) != mImageDataCache_.end();
+}
+
+const std::tuple<unsigned char*, GLint, GLint>& NaiveZ3D::MaterialMgr::GetImageData(const std::string &name) const
+{
+	return mImageDataCache_.find(name)->second;
+}
+
+void NaiveZ3D::MaterialMgr::AddImageData(const std::string &name, unsigned char *image, GLint w, GLint h)
+{
+	mImageDataCache_[name] = make_tuple(image, w, h);
+}
+
+void NaiveZ3D::MaterialMgr::ClearImageDataCache()
+{
+	for (const auto& item : mImageDataCache_)
+	{
+		SOIL_free_image_data(get<0>(item.second));
+	}
 }

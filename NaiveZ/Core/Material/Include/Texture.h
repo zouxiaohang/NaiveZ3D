@@ -14,6 +14,7 @@ namespace NaiveZ3D
 		~Texture();
 	public:
 		GLuint mTex_;
+
 		GLint mWidth_;
 		GLint mHeight_;
 	};

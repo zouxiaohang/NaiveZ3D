@@ -158,6 +158,7 @@ void NaiveZ3D::GLShaderMgr::UseShader(const std::string &name)
 	auto shader = mShaderCache_.find(name);
 	assert(shader != mShaderCache_.end());
 	shader->second.Use();
+	mCurShaderName_ = name;
 }
 
 void NaiveZ3D::GLShaderMgr::Init()

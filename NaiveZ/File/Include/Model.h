@@ -15,10 +15,6 @@ namespace NaiveZ3D
 		void AddMesh(Mesh& mesh)
 		{
 			mMeshVector_.push_back(mesh);
-			
-			//mVertexBuffer_.insert(mVertexBuffer_.end(), mesh.GetVertexBuffer().begin(), mesh.GetVertexBuffer().end());
-			//mTextureCoordBuffer_.insert(mTextureCoordBuffer_.begin(), mesh.GetTextureCoordBuffer().begin(), mesh.GetTextureCoordBuffer().end());
-			//mNormalBuffer_.insert(mNormalBuffer_.begin(), mesh.GetNormalBuffer().begin(), mesh.GetNormalBuffer().end());
 		}
 
 		void SetMtl(const std::string& mtl) { mMtl_ = mtl; }

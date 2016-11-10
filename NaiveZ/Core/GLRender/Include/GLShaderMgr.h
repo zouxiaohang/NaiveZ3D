@@ -16,7 +16,13 @@ namespace NaiveZ3D
 	public:
 		void UseShader(const std::string&);
 		template<class T>
-		void SetShaderUniform(const std::string& shaderName, const std::string& uniform, const T& value);
+		void SetShaderUniformMatrix(const std::string& shaderName, const std::string& uniform, const T& value);
+		template<class T>
+		void SetUniformByNameMatrix(const std::string& uniform, const T& value);
+		template<class T>
+		void SetShaderUniformFI(const std::string& shaderName, const std::string& uniform, const T& value);
+		template<class T>
+		void SetUniformFIByName(const std::string& uniform, const T& value);
 
 	private:
 		void Init();
@@ -41,15 +47,32 @@ namespace NaiveZ3D
 		bool IsValid()const { return mInited; }
 	private:
 		bool mInited;
+		std::string mCurShaderName_;
 
 	private:
 		ShaderCache mShaderCache_;
 	};
 
 	template<class T>
-	inline void GLShaderMgr::SetShaderUniform(const std::string & shaderName, const std::string & uniform, const T & value)
+	inline void GLShaderMgr::SetShaderUniformMatrix(const std::string & shaderName, const std::string & uniform, const T & value)
 	{
 		auto& shader = GetShaderByName(shaderName);
-		shader.SetUniformByName(uniform, value);
+		shader.SetUniformMatrixByName(uniform, value);
+	}
+	template<class T>
+	inline void GLShaderMgr::SetUniformByNameMatrix(const std::string & uniform, const T & value)
+	{
+		SetShaderUniformMatrix(mCurShaderName_, uniform, value);
+	}
+	template<class T>
+	inline void GLShaderMgr::SetShaderUniformFI(const std::string & shaderName, const std::string & uniform, const T & value)
+	{
+		auto& shader = GetShaderByName(shaderName);
+		shader.SetUniformFIByName(uniform, value);
+	}
+	template<class T>
+	inline void GLShaderMgr::SetUniformFIByName(const std::string & uniform, const T & value)
+	{
+		SetShaderUniformFI(mCurShaderName_, uniform, value);
 	}
 }

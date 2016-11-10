@@ -35,11 +35,11 @@ bool NaiveZ3D::GLRenderSystem::Init(Application* app)
 	//开启深度测试
 	glEnable(GL_DEPTH_TEST);
 
-	//纹理格式设置
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	////纹理格式设置
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 	return true;
 }
@@ -59,7 +59,7 @@ void NaiveZ3D::GLRenderSystem::Draw(GLfloat delta)
 	//projection = glm::perspective(45.0f, 1.0f * mApplication_->GetAppWidth() / mApplication_->GetAppHeight(), 0.1f, 1000.0f);
 	//auto transform = projection * view * model;
 	auto transform = mApplication_->GetCamera().GetVPTransform() * model;
-	GLShaderMgr::Instance().SetShaderUniform("eyeball", "MVP", transform);
+	GLShaderMgr::Instance().SetShaderUniformMatrix("eyeball", "MVP", transform);
 	DrawGLModel();
 }
 

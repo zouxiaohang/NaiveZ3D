@@ -14,12 +14,6 @@ namespace NaiveZ3D
 
 	struct GLVertexData
 	{
-		enum class Format
-		{
-			POS,
-			POS_UV,
-			POS_UV_N,
-		};
 		GLVertexData(const Vector3& v)
 		{
 			x_ = v.x_;
@@ -39,21 +33,6 @@ namespace NaiveZ3D
 		GLfloat x_, y_, z_;
 		GLfloat u_, v_;
 		//GLfloat nx_, ny_, nz_;
-
-		template <class T>
-		T ToFormat(Format format);
-		//GLVertexData(const Vector3& v, const Vector2& tex)
-		//{
-		//	x_ = v.x_;
-		//	y_ = v.y_;
-		//	z_ = v.z_;
-
-		//	s_ = tex.x_;
-		//	t_ = tex.y_;
-		//}
-
-		//GLfloat x_, y_, z_;
-		//GLfloat s_, t_;
 	};
 	using GLVertexDataBufferBuffer = std::vector<std::vector<GLVertexData>>;
 
@@ -76,6 +55,8 @@ namespace NaiveZ3D
 		std::vector<size_t> mEBOSizeBuffer_;
 		Buffer mProgramBuffer_;
 		GLVertexDataBufferBuffer mGLVertexDataBufferBuffer_;
+		std::string mMtlName_;
+		std::vector<std::string> mUseMtlBuffer_;
 
 		bool mUseTex_;
 	};

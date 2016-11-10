@@ -10,5 +10,5 @@ out vec2 texOut;
 void main()
 {
 	gl_Position = MVP * vec4(pos,1);
-	texOut = tex;
+	texOut = vec2(tex.x, 1.0 - tex.y);
 }

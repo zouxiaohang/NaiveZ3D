@@ -10,10 +10,12 @@ NaiveZ3D::GLModel::GLModel(const Model &model)
 {
 	const auto& meshBuffer = model.GetAllMesh();
 	mUseTex_ = model.UseTex();
+	mMtlName_ = model.GetMtl();
 	mVAOBuffer_.resize(meshBuffer.size());
 	mVBOBuffer_.resize(meshBuffer.size());
 	mEBOBuffer_.resize(meshBuffer.size());
 	mEBOSizeBuffer_.resize(meshBuffer.size());
+	mUseMtlBuffer_.resize(meshBuffer.size());
 	mGLVertexDataBufferBuffer_.resize(meshBuffer.size());
 	glGenVertexArrays(mVAOBuffer_.size(), mVAOBuffer_.data());
 	glGenBuffers(mVBOBuffer_.size(), mVBOBuffer_.data());
@@ -22,6 +24,7 @@ NaiveZ3D::GLModel::GLModel(const Model &model)
 	for (auto i = 0; i != meshBuffer.size(); ++i)
 	{
 		const auto& mesh = meshBuffer[i];
+		mUseMtlBuffer_[i] = mesh.GetMtl();
 		auto vao = mVAOBuffer_[i];//vertex array object
 		auto vbo = mVBOBuffer_[i];//vertex buffer object
 		auto ebo = mEBOBuffer_[i];//element buffer object
@@ -98,16 +101,25 @@ void NaiveZ3D::GLModel::DrawArrays()
 
 void NaiveZ3D::GLModel::DrawElements()
 {
+	assert(mMtlName_ != "");
+	const auto& material = MaterialMgr::Instance().GetMaterial(mMtlName_);
+
 	for (auto i = 0; i != mVAOBuffer_.size(); ++i)
 	{
 		auto vao = mVAOBuffer_[i];
 		auto ebo = mEBOBuffer_[i];
+		
 
 		if (!mUseTex_)//model不使用纹理则渲染为线框模式
 		{
 			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);//暂时设为线框模式
 		}
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);//暂时设为线框模式
+		else
+		{
+			auto& usemtl = mUseMtlBuffer_[i];
+			material.Use(usemtl);
+		}
+		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);//暂时设为线框模式
 		glBindVertexArray(vao);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
 		

@@ -11,16 +11,8 @@ namespace
 	{
 		int v, t, n;
 		record() {}
-		record(const record& r) :v(r.v), t(r.t), n(r.n) {}
-		record& operator = (const record& r) { v = r.v; t = r.t; n = r.n; return *this; }
 		string toString() { return to_string(v) + '/' + to_string(t) + '/' + to_string(n); }
 	};
-	bool operator == (const record& r1, const record& r2) { 
-		return r1.v == r2.v && r1.t == r2.t && r1.n == r2.n; 
-	}
-	bool operator <(const record& r1, const record& r2) { 
-		return 0; 
-	}
 }
 
 namespace NaiveZ3D
@@ -95,12 +87,9 @@ namespace NaiveZ3D
 	}
 	void Mesh::BuildDataUseTex(const Model& model)const
 	{
-		//create indice
-		//std::vector<unsigned int> indice;
-
 		//create vertex data
 		std::vector<int> vi, ti, ni;
-		record r, r1;
+		record r;
 		auto& buildMap = model.GetBuildMap();
 		auto& re = model.GetRecord();
 		int index4[6] = { 0,1,2,0,2,3 };
@@ -118,6 +107,7 @@ namespace NaiveZ3D
 					v = vb[i]; t = tb[i]; n = nb[i];
 					r.v = v; r.t = t; r.n = n;
 					auto rs = r.toString();
+					//create indice
 					if(!model.HasIndice(rs))
 					{
 						buildMap[rs] = re;
@@ -142,6 +132,7 @@ namespace NaiveZ3D
 					v = vb[i]; t = tb[i]; n = nb[i];
 					r.v = v; r.t = t; r.n = n;
 					auto rs = r.toString();
+					//create indice
 					if (!model.HasIndice(rs))
 					{
 						buildMap[rs] = re;
@@ -170,6 +161,5 @@ namespace NaiveZ3D
 			mTextureCoordCache_[i] = tb[ti[i]];
 			mNormalCache_[i] = nb[ni[i]];
 		}
-		//mIndiceCache_ = move(indice);
 	}
 }

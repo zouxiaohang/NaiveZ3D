@@ -4,6 +4,7 @@
 #include <map>
 
 #include "GL/glew.h"
+#include "glm/glm_include.h"
 
 namespace NaiveZ3D
 {
@@ -25,7 +26,9 @@ namespace NaiveZ3D
 
 		void Use();
 		template<class T>
-		void SetUniformByName(std::string name, const T& value);
+		void SetUniformMatrixByName(const std::string& name, const T& value);
+		template<class T >
+		void SetUniformFIByName(const std::string& name, const T& value);
 
 		std::map<std::string, std::string> GetShaderSource()const { return mSource_; }
 		std::string GetShaderName()const { return mShaderName_; }
@@ -47,14 +50,23 @@ namespace NaiveZ3D
 		std::string mLinkErrorInfo_;
 
 		GLuint mMVPLoc_;
+		GLuint mKdSampler2D_;
 	};
 
 	template<class T>
-	inline void Shader::SetUniformByName(std::string name, const T & value)
+	inline void Shader::SetUniformMatrixByName(const std::string& name, const T & value)
 	{
 		if (name == "MVP")
 		{
 			glUniformMatrix4fv(mMVPLoc_, 1, GL_FALSE, glm::value_ptr(value));
+		}
+	}
+	template<class T>
+	inline void Shader::SetUniformFIByName(const std::string & name, const T & value)
+	{
+		if (name == "kdSampler2D")
+		{
+			glUniform1i(mKdSampler2D_, value);
 		}
 	}
 }
