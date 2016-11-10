@@ -21,17 +21,6 @@ namespace
 	bool operator <(const record& r1, const record& r2) { 
 		return 0; 
 	}
-	size_t gCurIndex = -1;
-	size_t GetIndice(const string& s, const vector<string>& v)
-	{
-		for (auto i = 0; i != v.size(); ++i)
-		{
-			if (s == v[i])
-			{
-				return i;
-			}
-		}
-	}
 }
 
 namespace NaiveZ3D
@@ -107,37 +96,14 @@ namespace NaiveZ3D
 	void Mesh::BuildDataUseTex(const Model& model)const
 	{
 		//create indice
-		std::vector<unsigned int> indice;
-		gCurIndex = -1;
-		//for (const auto& face : mFaceBuffer_)
-		//{
-		//	const auto& ib = face.mVertexIndex_;
-		//	if (ib.size() == 3)
-		//	{
-		//		//1、2、3
-		//		indice.insert(indice.end(), ib.begin(), ib.end());
-		//	}
-		//	else if (ib.size() == 4)
-		//	{
-		//		//1、2、3
-		//		indice.emplace_back(ib[0]);
-		//		indice.emplace_back(ib[1]);
-		//		indice.emplace_back(ib[2]);
-		//		//1、3、4
-		//		indice.emplace_back(ib[0]);
-		//		indice.emplace_back(ib[2]);
-		//		indice.emplace_back(ib[3]);
-		//	}
-		//}
-		//mIndiceCache_ = move(indice);
+		//std::vector<unsigned int> indice;
 
 		//create vertex data
 		std::vector<int> vi, ti, ni;
 		record r, r1;
-		//set<string> added;
-		//std::vector<string> test;
 		auto& buildMap = model.GetBuildMap();
 		auto& re = model.GetRecord();
+		int index4[6] = { 0,1,2,0,2,3 };
 
 		for (const auto& face : mFaceBuffer_)
 		{
@@ -145,30 +111,49 @@ namespace NaiveZ3D
 			const auto& tb = face.mTextureIndex_;
 			const auto& nb = face.mNormalIndex_;
 			int v, t, n;
-			//if (vb.size() == 3)
+			if (vb.size() == 3)
 			{
 				for (auto i = 0; i != vb.size(); ++i)
 				{
 					v = vb[i]; t = tb[i]; n = nb[i];
 					r.v = v; r.t = t; r.n = n;
 					auto rs = r.toString();
-					//新增的不对 0 1 2 2 1 5(3)
-					//indice.push_back(GetIndice(rs, test));
-					//if (added.count(rs) == 0)
 					if(!model.HasIndice(rs))
 					{
 						buildMap[rs] = re;
-						indice.push_back(re);
+						mIndiceCache_.push_back(re);
 						++re;
-						//added.insert(rs);
 						vi.emplace_back(v);
 						ti.emplace_back(t);
 						ni.emplace_back(n);
-						++gCurIndex;
 					}
 					else
 					{
-						indice.push_back(buildMap[rs]);
+						mIndiceCache_.push_back(buildMap[rs]);
+					}
+				}
+			}
+			else if (vb.size() == 4)
+			{
+				//1、2、3
+				//1、3、4
+				for (auto i : index4)
+				{
+					v = vb[i]; t = tb[i]; n = nb[i];
+					r.v = v; r.t = t; r.n = n;
+					auto rs = r.toString();
+					if (!model.HasIndice(rs))
+					{
+						buildMap[rs] = re;
+						mIndiceCache_.push_back(re);
+						++re;
+						vi.emplace_back(v);
+						ti.emplace_back(t);
+						ni.emplace_back(n);
+					}
+					else
+					{
+						mIndiceCache_.push_back(buildMap[rs]);
 					}
 				}
 			}
@@ -185,6 +170,6 @@ namespace NaiveZ3D
 			mTextureCoordCache_[i] = tb[ti[i]];
 			mNormalCache_[i] = nb[ni[i]];
 		}
-		mIndiceCache_ = move(indice);
+		//mIndiceCache_ = move(indice);
 	}
 }

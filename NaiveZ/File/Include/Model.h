@@ -39,7 +39,7 @@ namespace NaiveZ3D
 		void SetTextureCoordBuffer(const std::vector<TextureCoord>& tb) { mTextureCoordBuffer_ = tb; }
 		const std::vector<TextureCoord>& GetTextureCoordBuffer()const { return mTextureCoordBuffer_; }
 
-		bool UseTex()const { return !mTextureCoordBuffer_.empty(); }
+		bool UseTex()const { return !mTextureCoordBuffer_.empty() && 1; }
 
 	public:
 		bool HasIndice(const std::string&)const;
