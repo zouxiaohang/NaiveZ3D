@@ -130,6 +130,9 @@
     <ClCompile Include="Core\GLRender\GLRenderSystem.cpp" />
     <ClCompile Include="Core\GLRender\GLShader.cpp" />
     <ClCompile Include="Core\GLRender\GLShaderMgr.cpp" />
+    <ClCompile Include="Core\Light\PointLight.cpp" />
+    <ClCompile Include="Core\Light\SpotLight.cpp" />
+    <ClCompile Include="Core\Light\SunLight.cpp" />
     <ClCompile Include="Core\Material\Material.cpp" />
     <ClCompile Include="Core\Material\MaterialMgr.cpp" />
     <ClCompile Include="Core\Material\Texture.cpp" />
@@ -157,6 +160,9 @@
     <ClInclude Include="Core\GLRender\Include\GLShader.h" />
     <ClInclude Include="Core\GLRender\Include\GLShaderMgr.h" />
     <ClInclude Include="Core\GLRender\Include\GLViewPort.h" />
+    <ClInclude Include="Core\Light\Include\PointLight.h" />
+    <ClInclude Include="Core\Light\Include\SpotLight.h" />
+    <ClInclude Include="Core\Light\Include\SunLight.h" />
     <ClInclude Include="Core\Material\Include\Material.h" />
     <ClInclude Include="Core\Material\Include\MaterialMgr.h" />
     <ClInclude Include="Core\Material\Include\Texture.h" />
