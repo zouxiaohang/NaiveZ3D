@@ -1,10 +1,8 @@
-#include <iostream>
-using namespace std;
-
-#include "Include\GLRenderSystem.h"
-#include "Include\GLShaderMgr.h"
+#include "Include/GLRenderSystem.h"
+#include "Include/GLShaderMgr.h"
 #include "../../UniTest/UniTest.h"
 #include "../../Application/Include/Application.h"
+#include "../../Logger/Include/LoggerMgr.h"
 
 NaiveZ3D::GLRenderSystem::~GLRenderSystem()
 {
@@ -22,7 +20,7 @@ bool NaiveZ3D::GLRenderSystem::Init(Application* app)
 
 	if (glewInit() != GLEW_OK)
 	{
-		std::cout << "Failed to initialize GLEW" << std::endl;
+		LoggerMgr::Instance().Error("Failed to initialize GLEW");
 		return false;
 	}
 

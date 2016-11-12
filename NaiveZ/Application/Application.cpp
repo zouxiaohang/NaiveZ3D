@@ -1,9 +1,8 @@
-#include <iostream>
-
 #include "Include/Application.h"
 #include "../Core/GLRender/Include/GLViewPort.h"
 #include "../Utils/Include/Constant.h"
 #include "../File/Include/IOBJFileMgr.h"
+#include "../Logger/Include/LoggerMgr.h"
 
 NaiveZ3D::Application* app;
 
@@ -104,7 +103,7 @@ namespace NaiveZ3D
 		mWindow_ = glfwCreateWindow(mWidth_, mHeight_, mAppName_.c_str(), nullptr, nullptr);
 		if (mWindow_ == nullptr)
 		{
-			std::cout << "Failed to create GLFW window" << std::endl;
+			LoggerMgr::Instance().Error("Failed to create GLFW window");
 			return false;
 		}
 		glfwMakeContextCurrent(mWindow_);
@@ -117,7 +116,7 @@ namespace NaiveZ3D
 		auto ret = mGLRenderSystemPtr_->Init(this);
 		if (!ret)
 		{
-			std::cout << "Fail to init GLRenderSystem" << std::endl;
+			LoggerMgr::Instance().Error("Fail to init GLRenderSystem");
 			return false;
 		}
 		mGLRenderSystemPtr_->SetClearColor(Color::Black);

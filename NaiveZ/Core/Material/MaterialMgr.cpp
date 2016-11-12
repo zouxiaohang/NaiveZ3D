@@ -1,12 +1,12 @@
 #include <fstream>
 #include <sstream>
-#include <iostream>
 
 using namespace std;
 
 #include "Include/MaterialMgr.h"
 #include "../../UniTest/UniTest.h"
 #include "SOIL/SOIL/soil.h"
+#include "../../Logger/Include/LoggerMgr.h"
 
 NaiveZ3D::MaterialMgr & NaiveZ3D::MaterialMgr::Instance()
 {
@@ -27,9 +27,7 @@ void NaiveZ3D::MaterialMgr::LoadMtl(const std::string & mtlName)
 	ifstream ifs(mtlName);
 	if (!ifs)
 	{
-		UniTest::UniTest::SetConsoleColor(UniTest::UniTest::ConsoleColor::RED);
-		cout << "Fail to open OBJ file->" + mtlName << endl;;
-		UniTest::UniTest::SetConsoleColor();
+		LoggerMgr::Instance().Error("Fail to open OBJ file->" + mtlName);
 		return;
 	}
 	string line;

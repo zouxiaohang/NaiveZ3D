@@ -1,8 +1,7 @@
 #include <iostream>
 
-#include "File\Include\IOBJFileMgr.h"
-#include "Application\Include\Application.h"
-#include "glm/glm_include.h"
+#include "Application/Include/Application.h"
+#include "Logger/Include/LoggerMgr.h"
 
 using namespace std;
 
@@ -11,7 +10,13 @@ using namespace std;
 #ifndef UNITEST
 int main()
 {
-	cout << "................. NaiveZ3D engine init............" << endl;
+#ifdef _DEBUG
+	NaiveZ3D::LoggerMgr::Instance().SetLogLevel(NaiveZ3D::LoggerMgr::Level::Debug);
+#else
+	NaiveZ3D::LoggerMgr::Instance().SetLogLevel(NaiveZ3D::LoggerMgr::Level::Info);
+#endif
+
+	NaiveZ3D::LoggerMgr::Instance().Info("................. NaiveZ3D engine init............");
 	
 	NaiveZ3D::Application app("NaiveZ3D", 1334, 750);
 	if (!app.Init())
@@ -29,18 +34,18 @@ int main()
 	app.SetCamera(GLMVec3(0, 0, -25), GLMVec3(0, 0, 0), GLMVec3(0, 1, 0), 45.0f, 0.1f, 1000.0f);
 	app.Run();
 
+	NaiveZ3D::LoggerMgr::Instance().Info("................. NaiveZ3D engine exit............");
 	//system("pause");
 	return 0;
 }
 
 #else
-#include <map>
-#include <string>
 #include <cassert>
 using namespace std;
 
 #include "UniTest\ShaderUniTest.h"
 #include "UniTest\IOBJFileMgrUniTest.h"
+#include "UniTest\LoggerMgrUniTest.h"
 
 int main()
 {
@@ -48,6 +53,7 @@ int main()
 	
 	assert(NaiveZ3D::UniTest::ShaderUniTest::Test(), "ShaderUniTest");
 	assert(NaiveZ3D::UniTest::IOBJFileMgrUniTest::Test(), "IOBJFileMgrUniTest");
+	assert(NaiveZ3D::UniTest::LoggerMgrUniTest::Test(), "LoggerMgrUniTest");
 
 	system("pause");
 	return 0;

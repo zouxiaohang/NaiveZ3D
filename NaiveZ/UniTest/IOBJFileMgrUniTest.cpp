@@ -8,7 +8,7 @@ using namespace std;
 
 bool NaiveZ3D::UniTest::IOBJFileMgrUniTest::Test()
 {
-	string file = "Res/EyeBall/eyeball.obj";
+	string file = "Res/Cube/cube.obj";
 	auto mgr = NaiveZ3D::IOBJFileMgr();
 	auto model = mgr.Load(file);
 	if (model.MeshSize() == 0)

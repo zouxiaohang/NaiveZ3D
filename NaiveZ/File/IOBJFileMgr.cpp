@@ -1,7 +1,6 @@
 #include <vector>
 #include <sstream>
 #include <fstream>
-#include <iostream>
 #include <utility>//for move
 
 #include "Include/IOBJFileMgr.h"
@@ -12,6 +11,7 @@
 #include "Include/Face.h"
 #include "../Core/Material/Include/MaterialMgr.h"
 #include "../UniTest/UniTest.h"
+#include "../Logger/Include/LoggerMgr.h"
 
 using namespace std;
 
@@ -31,9 +31,7 @@ namespace NaiveZ3D
 		ifstream ifs(name);
 		if (!ifs)
 		{
-			UniTest::UniTest::SetConsoleColor(UniTest::UniTest::ConsoleColor::RED);
-			cout << "Fail to open OBJ file->" + name << endl;
-			UniTest::UniTest::SetConsoleColor();
+			LoggerMgr::Instance().Error("Fail to open OBJ file->" + name);
 			return model;
 		}
 		model.SetModelName(name);

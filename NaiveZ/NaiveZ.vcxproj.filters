@@ -167,6 +167,9 @@
     <ClCompile Include="File\Include\Model.cpp">
       <Filter>File</Filter>
     </ClCompile>
+    <ClCompile Include="UniTest\LoggerMgrUniTest.cpp">
+      <Filter>UniTest</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="File\Include\IFileMgr.h">
@@ -259,6 +262,9 @@
     <ClInclude Include="Core\Material\Include\Texture.h">
       <Filter>Core\Material\Include</Filter>
     </ClInclude>
+    <ClInclude Include="UniTest\LoggerMgrUniTest.h">
+      <Filter>UniTest</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Res\EyeBall\eyeball.mtl">
@@ -279,6 +285,7 @@
     <None Include="Res\Shaders\ShaderConfig">
       <Filter>Res\Shaders</Filter>
     </None>
+    <None Include="..\README.md" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Doc\开发计划\开发计划.txt">

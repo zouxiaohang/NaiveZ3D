@@ -5,13 +5,13 @@
 #include <vector>
 #include <utility>
 #include <unordered_set>
-#include <iostream>
 using namespace std;
 
 #include <Windows.h>
 
 #include "Include/GLShaderMgr.h"
 #include "../../UniTest/UniTest.h"
+#include "../../Logger/Include/LoggerMgr.h"
 
 namespace
 {
@@ -128,16 +128,12 @@ void NaiveZ3D::GLShaderMgr::LoadShaders()
 		{
 			if (shader.GetCompileState() != Shader::ShaderState::SUCC)
 			{
-				UniTest::UniTest::SetConsoleColor(UniTest::UniTest::ConsoleColor::RED);
-				cout << "CompileState: " << shader.GetCompileErrorInfo() << endl;
-				UniTest::UniTest::SetConsoleColor();
+				LoggerMgr::Instance().Error("CompileState: " + shader.GetCompileErrorInfo());
 				assert(false);
 			}
 			else if (shader.GetLinkState() != Shader::ShaderState::SUCC)
 			{
-				UniTest::UniTest::SetConsoleColor(UniTest::UniTest::ConsoleColor::RED);
-				cout << "LinkState: " << shader.GetLinkErrorInfo() << endl;
-				UniTest::UniTest::SetConsoleColor();
+				LoggerMgr::Instance().Error("LinkState: " + shader.GetLinkErrorInfo());
 				assert(false);
 			}
 		}
