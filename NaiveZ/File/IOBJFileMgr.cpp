@@ -2,6 +2,7 @@
 #include <sstream>
 #include <fstream>
 #include <iostream>
+#include <utility>//for move
 
 #include "Include/IOBJFileMgr.h"
 #include "../Math/Include/Vector.h"
@@ -66,7 +67,7 @@ namespace NaiveZ3D
 					mesh.SetName(meshName);
 					mesh.SetMtl(useMtl);
 					mesh.SetFaceBuffer(fBuffer);
-					model.AddMesh(mesh);
+					model.AddMesh(move(mesh));
 					fBuffer.clear();
 				}
 				line >> meshName;
@@ -106,12 +107,12 @@ namespace NaiveZ3D
 			}
 		}
 
-		if (!vBuffer.empty())
+		if (!fBuffer.empty())
 		{
 			mesh.SetName(meshName);
 			mesh.SetMtl(useMtl);
 			mesh.SetFaceBuffer(fBuffer);
-			model.AddMesh(mesh);
+			model.AddMesh(move(mesh));
 			model.SetVertexBuffer(move(vBuffer));
 			model.SetTextureCoordBuffer(move(tcBuffer));
 			model.SetNormalBuffer(move(nBuffer));

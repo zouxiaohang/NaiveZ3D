@@ -85,6 +85,22 @@ namespace NaiveZ3D
 		}
 		return mTextureCoordCache_;
 	}
+	const std::vector<Vector3>& Mesh::GenNormalBuffer(const Model &model) const
+	{
+		if (!mNormalCache_.empty())
+		{
+			return mNormalCache_;
+		}
+		if (!model.UseTex())
+		{
+			mNormalCache_.resize(model.GetVertexBuffer().size());
+		}
+		else
+		{
+			BuildDataUseTex(model);
+		}
+		return mNormalCache_;
+	}
 	void Mesh::BuildDataUseTex(const Model& model)const
 	{
 		//create vertex data

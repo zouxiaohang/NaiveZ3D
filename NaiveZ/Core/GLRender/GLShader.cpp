@@ -126,7 +126,10 @@ namespace NaiveZ3D
 	}
 	void Shader::InitUnifrom()
 	{
+		mMLoc_ = glGetUniformLocation(mProgram_, "M");
 		mMVPLoc_ = glGetUniformLocation(mProgram_, "MVP");
+		
+		mMNormalLoc_ = glGetUniformLocation(mProgram_, "M_Normal");
 		mKdSampler2D_ = glGetUniformLocation(mProgram_, "kdSampler2D");
 		mUseTex_ = glGetUniformLocation(mProgram_, "UseTex");
 	}

@@ -50,17 +50,26 @@ namespace NaiveZ3D
 		std::string mLinkErrorInfo_;
 
 		GLuint mMVPLoc_;
+		GLuint mMLoc_;
+		GLuint mMNormalLoc_;
+
 		GLuint mKdSampler2D_;
-		GLboolean mUseTex_;
+		GLuint mUseTex_;
 	};
 
 	template<class T>
 	inline void Shader::SetUniformMatrixByName(const std::string& name, const T & value)
 	{
+		GLuint loc = -1;
 		if (name == "MVP")
-		{
-			glUniformMatrix4fv(mMVPLoc_, 1, GL_FALSE, glm::value_ptr(value));
-		}
+			loc = mMVPLoc_;
+		else if (name == "M")
+			loc = mMLoc_;
+		else if (name == "M_Normal")
+			loc = mMNormalLoc_;
+
+		assert(loc != -1);
+		glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(value));
 	}
 	template<class T>
 	inline void Shader::SetUniformFIByName(const std::string & name, const T & value)

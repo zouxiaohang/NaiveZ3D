@@ -20,7 +20,7 @@ namespace NaiveZ3D
 			y_ = v.y_;
 			z_ = v.z_;
 		}
-		GLVertexData(const Vector3& v, const Vector2& t)
+		GLVertexData(const Vector3& v, const Vector2& t, const Vector3& n)
 		{
 			x_ = v.x_;
 			y_ = v.y_;
@@ -28,11 +28,15 @@ namespace NaiveZ3D
 
 			u_ = t.x_;
 			v_ = t.y_;
+
+			nx_ = n.x_;
+			ny_ = n.y_;
+			nz_ = n.z_;
 		}
 
 		GLfloat x_, y_, z_;
 		GLfloat u_, v_;
-		//GLfloat nx_, ny_, nz_;
+		GLfloat nx_, ny_, nz_;
 	};
 	using GLVertexDataBufferBuffer = std::vector<std::vector<GLVertexData>>;
 

@@ -1,5 +1,6 @@
 #include <cassert>
 #include <vector>
+#include <iostream>
 using namespace std;
 
 #include "include/GLModel.h"
@@ -12,20 +13,25 @@ NaiveZ3D::GLModel::GLModel(const Model &model)
 	const auto& meshBuffer = model.GetAllMesh();
 	mUseTex_ = model.UseTex();
 	mMtlName_ = model.GetMtl();
+
 	mVAOBuffer_.resize(meshBuffer.size());
 	mVBOBuffer_.resize(meshBuffer.size());
 	mEBOBuffer_.resize(meshBuffer.size());
 	mEBOSizeBuffer_.resize(meshBuffer.size());
 	mUseMtlBuffer_.resize(meshBuffer.size());
 	mGLVertexDataBufferBuffer_.resize(meshBuffer.size());
+
 	glGenVertexArrays(mVAOBuffer_.size(), mVAOBuffer_.data());
 	glGenBuffers(mVBOBuffer_.size(), mVBOBuffer_.data());
 	glGenBuffers(mEBOBuffer_.size(), mEBOBuffer_.data());
 
 	for (auto i = 0; i != meshBuffer.size(); ++i)
 	{
+		if (i == 0)
+			continue;
 		const auto& mesh = meshBuffer[i];
 		mUseMtlBuffer_[i] = mesh.GetMtl();
+
 		auto vao = mVAOBuffer_[i];//vertex array object
 		auto vbo = mVBOBuffer_[i];//vertex buffer object
 		auto ebo = mEBOBuffer_[i];//element buffer object
@@ -34,8 +40,9 @@ NaiveZ3D::GLModel::GLModel(const Model &model)
 		const auto& edb = mesh.GenIndiceBuffer(model);	//element data buffer for this mesh
 		mEBOSizeBuffer_[i] = edb.size();
 		const auto& vb = mesh.GenVertexBuffer(model);	//vertex data buffer for this mesh
-		const auto& tex = mesh.GenTexCoordBuffer(model);	//texcoord data buffer for this mesh
-		assert(tex.size() == vb.size());
+		const auto& tb = mesh.GenTexCoordBuffer(model);	//texcoord data buffer for this mesh
+		const auto& nb = mesh.GenNormalBuffer(model);
+		assert(tb.size() == vb.size() && nb.size() == vb.size());
 
 		glBindVertexArray(vao);
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
@@ -43,17 +50,18 @@ NaiveZ3D::GLModel::GLModel(const Model &model)
 
 		for (auto index = 0; index != vb.size(); ++index)
 		{
-			auto data = GLVertexData(vb[index], tex[index]);
+			auto data = GLVertexData(vb[index], tb[index], nb[index]);
 			vdb.emplace_back(data);
 		}
-		// vertex buffer
+		
 		glBufferData(GL_ARRAY_BUFFER, sizeof(GLVertexData)*vdb.size(), (const GLvoid*)&vdb[0], GL_STATIC_DRAW);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*5, (GLvoid*)0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*8, (GLvoid*)0);
 		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*5, (GLvoid*)(3*sizeof(GLfloat)));
+		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*8, (GLvoid*)(3*sizeof(GLfloat)));
 		glEnableVertexAttribArray(1);
+		glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*8, (GLvoid*)(5*sizeof(GLfloat)));
+		glEnableVertexAttribArray(2);
 
-		//element buffer
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint)*edb.size(), edb.data(), GL_STATIC_DRAW);
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
@@ -103,7 +111,6 @@ void NaiveZ3D::GLModel::DrawElements()
 	{
 		auto vao = mVAOBuffer_[i];
 		auto ebo = mEBOBuffer_[i];
-		
 
 		if (!mUseTex_)//model不使用纹理则渲染为线框模式
 		{
@@ -115,7 +122,7 @@ void NaiveZ3D::GLModel::DrawElements()
 			assert(mMtlName_ != "");
 			const auto& material = MaterialMgr::Instance().GetMaterial(mMtlName_);
 			auto& usemtl = mUseMtlBuffer_[i];
-			material.Use(usemtl);
+			if(usemtl != "")material.Use(usemtl);
 			GLShaderMgr::Instance().SetUniformFIByName("UseTex", 1);
 		}
 

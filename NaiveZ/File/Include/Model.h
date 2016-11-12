@@ -12,9 +12,9 @@ namespace NaiveZ3D
 	{
 	public:
 		Model():mUseForRecord_(0){}
-		void AddMesh(Mesh& mesh)
+		void AddMesh(Mesh&& mesh)
 		{
-			mMeshVector_.push_back(mesh);
+			mMeshVector_.emplace_back(std::move(mesh));
 		}
 
 		void SetMtl(const std::string& mtl) { mMtl_ = mtl; }
