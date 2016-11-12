@@ -34,6 +34,7 @@ bool NaiveZ3D::GLRenderSystem::Init(Application* app)
 
 	//开启深度测试
 	glEnable(GL_DEPTH_TEST);
+	//glEnable(GL_CULL_FACE);
 
 	return true;
 }
@@ -41,7 +42,6 @@ bool NaiveZ3D::GLRenderSystem::Init(Application* app)
 void NaiveZ3D::GLRenderSystem::Draw(GLfloat delta)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 
 	//暂时这么写
 	//TODO:重构
@@ -80,14 +80,13 @@ void NaiveZ3D::GLRenderSystem::CreateGLModelBuffer(const ModelMap& modelMap)
 {
 	for (const auto& kv : modelMap)
 	{
-		auto model = GLModel(kv.second);
-		mGLModelBuffer_.emplace_back(model);
+		mGLModelBuffer_.emplace_back(GLModel(kv.second));
 	}
 }
 
 void NaiveZ3D::GLRenderSystem::DrawGLModel()
 {
-	for (auto& model : mGLModelBuffer_)
+	for (const auto& model : mGLModelBuffer_)
 	{
 		model.Draw();
 	}

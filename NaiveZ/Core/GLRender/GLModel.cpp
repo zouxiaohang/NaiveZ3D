@@ -27,7 +27,7 @@ NaiveZ3D::GLModel::GLModel(const Model &model)
 
 	for (auto i = 0; i != meshBuffer.size(); ++i)
 	{
-		if (i == 0)
+		if (i == 2)
 			continue;
 		const auto& mesh = meshBuffer[i];
 		mUseMtlBuffer_[i] = mesh.GetMtl();
@@ -54,7 +54,7 @@ NaiveZ3D::GLModel::GLModel(const Model &model)
 			vdb.emplace_back(data);
 		}
 		
-		glBufferData(GL_ARRAY_BUFFER, sizeof(GLVertexData)*vdb.size(), (const GLvoid*)&vdb[0], GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(GLVertexData)*vdb.size(), vdb.data(), GL_STATIC_DRAW);
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*8, (GLvoid*)0);
 		glEnableVertexAttribArray(0);
 		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*8, (GLvoid*)(3*sizeof(GLfloat)));
@@ -77,7 +77,7 @@ void NaiveZ3D::GLModel::Destroy()
 	glDeleteBuffers(mEBOBuffer_.size(), mEBOBuffer_.data());
 }
 
-void NaiveZ3D::GLModel::Draw()
+void NaiveZ3D::GLModel::Draw()const
 {
 	if (mEBOSizeBuffer_.empty())
 	{
@@ -89,7 +89,7 @@ void NaiveZ3D::GLModel::Draw()
 	}
 }
 
-void NaiveZ3D::GLModel::DrawArrays()
+void NaiveZ3D::GLModel::DrawArrays()const
 {
 	assert(false, "do not use glDrawArrays");
 
@@ -105,7 +105,7 @@ void NaiveZ3D::GLModel::DrawArrays()
 	}
 }
 
-void NaiveZ3D::GLModel::DrawElements()
+void NaiveZ3D::GLModel::DrawElements()const
 {
 	for (auto i = 0; i != mVAOBuffer_.size(); ++i)
 	{

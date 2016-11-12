@@ -46,18 +46,17 @@ namespace NaiveZ3D
 		GLModel(const Model&);
 		
 		void Destroy();
-		void Draw();
+		void Draw()const;
 
 	private:
-		void DrawArrays();
-		void DrawElements();
+		void DrawArrays()const;
+		void DrawElements()const;
 
 	private:
 		Buffer mVAOBuffer_;
 		Buffer mVBOBuffer_;
 		Buffer mEBOBuffer_;
 		std::vector<size_t> mEBOSizeBuffer_;
-		Buffer mProgramBuffer_;
 		GLVertexDataBufferBuffer mGLVertexDataBufferBuffer_;
 		std::string mMtlName_;
 		std::vector<std::string> mUseMtlBuffer_;
