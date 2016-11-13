@@ -1,0 +1,15 @@
+# 
+# 
+newmtl Diablo_Diablo_diff.dds
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd Diablo_diff.bmp
+#map_Ks Diablo_spec.dds
+#map_Bump Diablo_norm.dds
+
+

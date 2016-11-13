@@ -109,6 +109,7 @@ void NaiveZ3D::MaterialMgr::LoadMtl(const std::string & mtlName)
 		{
 			string tex;
 			ss >> tex;
+			if (tex == "")continue;
 			tex = path +tex;
 			mtlData.ReadTexture(tex, tok);
 		}

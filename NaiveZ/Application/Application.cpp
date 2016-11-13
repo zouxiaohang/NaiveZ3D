@@ -119,7 +119,7 @@ namespace NaiveZ3D
 			LoggerMgr::Instance().Error("Fail to init GLRenderSystem");
 			return false;
 		}
-		mGLRenderSystemPtr_->SetClearColor(Color::Black);
+		mGLRenderSystemPtr_->SetClearColor(Color::White);
 
 		return true;
 	}
