@@ -1,10 +1,10 @@
-#include <cassert>
 #include <tuple>
 using namespace std;
 
 #include "Include/Texture.h"
 #include "SOIL/SOIL/soil.h"
 #include "Include/MaterialMgr.h"
+#include "../../Utils/Include/Helper.h"
 
 NaiveZ3D::Texture::Texture(const std::string & name)
 {
@@ -24,7 +24,7 @@ NaiveZ3D::Texture::Texture(const std::string & name)
 		image = SOIL_load_image(name.c_str(), &mWidth_, &mHeight_, 0, SOIL_LOAD_RGBA);
 		MaterialMgr::Instance().AddImageData(name, image, mWidth_, mHeight_);
 	}
-	assert(image);
+	ZAssert(image != nullptr, "Load image file "+name+" fail");
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, mWidth_, mHeight_, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
 	//纹理格式设置
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);

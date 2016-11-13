@@ -1,6 +1,6 @@
 #include "Include/LoggerMgr.h"
+#include "../Utils/Include/Helper.h"
 
-#include <cassert>
 #include <ctime>
 #ifdef OutputToConsole
 #include <iostream>
@@ -75,7 +75,7 @@ void NaiveZ3D::LoggerMgr::SetConsoleColor(ConsoleColor c)
 void NaiveZ3D::LoggerMgr::Init()
 {
 	mFilePtr_ = FilePtr(new ofstream("./gamelog.log", ios_base::out | ios_base::trunc));
-	assert(mFilePtr_ && mFilePtr_->is_open());
+	ZAssert(mFilePtr_ && mFilePtr_->is_open(), "Can not open log file 'gamelog.log'");
 	mInited_ = true;
 }
 

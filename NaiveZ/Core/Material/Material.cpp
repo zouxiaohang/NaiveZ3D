@@ -1,9 +1,9 @@
 #include <utility>
-#include <cassert>
 using namespace std;
 
 #include "Include/Material.h"
 #include "../GLRender/Include/GLShaderMgr.h"
+#include "../../Utils/Include/Helper.h"
 
 NaiveZ3D::Material::Material(const std::string & name)
 	:mName_(name)
@@ -44,7 +44,7 @@ void NaiveZ3D::Material::Use(const string& name) const
 	const auto& mtlData = mMtlDataMap_.find(name)->second;
 	if (mtlData.map_Kd_ != "")
 	{
-		assert(mtlData.KdTexPtr_);
+		ZAssert(mtlData.KdTexPtr_ != nullptr, "KdTex pointer is null");
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, mtlData.KdTexPtr_->mTex_);
 		GLShaderMgr::Instance().SetUniformFIByName("kdSampler2D", 0);

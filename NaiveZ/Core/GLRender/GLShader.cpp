@@ -1,9 +1,9 @@
 #include "Include\GLShader.h"
+#include "../../Utils/Include/Helper.h"
 
 #include <fstream>
 #include <sstream>
 #include <vector>
-#include <cassert>
 using namespace std;
 
 namespace NaiveZ3D
@@ -26,7 +26,7 @@ namespace NaiveZ3D
 	void Shader::Use()
 	{
 		bool ret = glIsProgram(mProgram_);
-		assert(ret);
+		ZAssert(ret, "mProgram_ is not a valid gl program");
 		if (mCompileState_ == ShaderState::SUCC && mLinkState_ == ShaderState::SUCC)
 		{
 			glUseProgram(mProgram_);

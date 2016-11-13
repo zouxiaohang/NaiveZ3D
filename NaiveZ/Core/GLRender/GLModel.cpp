@@ -1,4 +1,3 @@
-#include <cassert>
 #include <vector>
 #include <iostream>
 using namespace std;
@@ -7,6 +6,7 @@ using namespace std;
 #include "../../../File/Include/Model.h"
 #include "../Material/Include/MaterialMgr.h"
 #include "Include/GLShaderMgr.h"
+#include "../../Utils/Include/Helper.h"
 
 NaiveZ3D::GLModel::GLModel(const Model &model)
 {
@@ -42,7 +42,7 @@ NaiveZ3D::GLModel::GLModel(const Model &model)
 		const auto& vb = mesh.GenVertexBuffer(model);	//vertex data buffer for this mesh
 		const auto& tb = mesh.GenTexCoordBuffer(model);	//texcoord data buffer for this mesh
 		const auto& nb = mesh.GenNormalBuffer(model);
-		assert(tb.size() == vb.size() && nb.size() == vb.size());
+		ZAssert(tb.size() == vb.size() && nb.size() == vb.size(), "Vertex¡¢Tex¡¢element data size not equal");
 
 		glBindVertexArray(vao);
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
@@ -91,7 +91,7 @@ void NaiveZ3D::GLModel::Draw()const
 
 void NaiveZ3D::GLModel::DrawArrays()const
 {
-	assert(false, "do not use glDrawArrays");
+	ZAssert(false, "do not use glDrawArrays");
 
 	for (auto i = 0; i != mVAOBuffer_.size(); ++i)
 	{
@@ -119,7 +119,7 @@ void NaiveZ3D::GLModel::DrawElements()const
 		}
 		else
 		{
-			assert(mMtlName_ != "");
+			ZAssert(mMtlName_ != "", "material name is null");
 			const auto& material = MaterialMgr::Instance().GetMaterial(mMtlName_);
 			auto& usemtl = mUseMtlBuffer_[i];
 			if(usemtl != "")material.Use(usemtl);

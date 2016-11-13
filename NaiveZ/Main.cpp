@@ -40,20 +40,18 @@ int main()
 }
 
 #else
-#include <cassert>
-using namespace std;
-
 #include "UniTest\ShaderUniTest.h"
 #include "UniTest\IOBJFileMgrUniTest.h"
 #include "UniTest\LoggerMgrUniTest.h"
+#include "Utils\Include\Helper.h"
 
 int main()
 {
 	std::cout << "................. NaiveZ3D engine unitest............" << std::endl;
 	
-	assert(NaiveZ3D::UniTest::ShaderUniTest::Test(), "ShaderUniTest");
-	assert(NaiveZ3D::UniTest::IOBJFileMgrUniTest::Test(), "IOBJFileMgrUniTest");
-	assert(NaiveZ3D::UniTest::LoggerMgrUniTest::Test(), "LoggerMgrUniTest");
+	ZAssert(NaiveZ3D::UniTest::ShaderUniTest::Test(), "ShaderUniTest Fail");
+	ZAssert(NaiveZ3D::UniTest::IOBJFileMgrUniTest::Test(), "IOBJFileMgrUniTest Fail");
+	ZAssert(NaiveZ3D::UniTest::LoggerMgrUniTest::Test(), "LoggerMgrUniTest Fail");
 
 	system("pause");
 	return 0;

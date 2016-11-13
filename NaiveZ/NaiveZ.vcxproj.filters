@@ -182,6 +182,9 @@
     <ClCompile Include="Core\Light\SunLight.cpp">
       <Filter>Core\Light</Filter>
     </ClCompile>
+    <ClCompile Include="Utils\Helper.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="File\Include\IFileMgr.h">

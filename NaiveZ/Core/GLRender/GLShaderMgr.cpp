@@ -1,4 +1,3 @@
-#include <cassert>
 #include <string>
 #include <fstream>
 #include <sstream>
@@ -12,6 +11,7 @@ using namespace std;
 #include "Include/GLShaderMgr.h"
 #include "../../UniTest/UniTest.h"
 #include "../../Logger/Include/LoggerMgr.h"
+#include "../../Utils/Include/Helper.h"
 
 namespace
 {
@@ -129,12 +129,12 @@ void NaiveZ3D::GLShaderMgr::LoadShaders()
 			if (shader.GetCompileState() != Shader::ShaderState::SUCC)
 			{
 				LoggerMgr::Instance().Error("CompileState: " + shader.GetCompileErrorInfo());
-				assert(false);
+				ZAssert(false, "compile shader fail");
 			}
 			else if (shader.GetLinkState() != Shader::ShaderState::SUCC)
 			{
 				LoggerMgr::Instance().Error("LinkState: " + shader.GetLinkErrorInfo());
-				assert(false);
+				ZAssert(false, "link shader fail");
 			}
 		}
 		else
@@ -152,7 +152,7 @@ NaiveZ3D::Shader & NaiveZ3D::GLShaderMgr::GetShaderByName(const std::string & na
 void NaiveZ3D::GLShaderMgr::UseShader(const std::string &name)
 {
 	auto shader = mShaderCache_.find(name);
-	assert(shader != mShaderCache_.end());
+	ZAssert(shader != mShaderCache_.end(), "can not find shader "+name);
 	shader->second.Use();
 	mCurShaderName_ = name;
 }

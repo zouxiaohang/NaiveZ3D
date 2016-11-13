@@ -5,6 +5,7 @@
 
 #include "GL/glew.h"
 #include "glm/glm_include.h"
+#include "../../../Utils/Include/Helper.h"
 
 namespace NaiveZ3D
 {
@@ -68,7 +69,7 @@ namespace NaiveZ3D
 		else if (name == "M_Normal")
 			loc = mMNormalLoc_;
 
-		assert(loc != -1);
+		ZAssert(loc != -1, "can not find uniform "+name);
 		glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(value));
 	}
 	template<class T>

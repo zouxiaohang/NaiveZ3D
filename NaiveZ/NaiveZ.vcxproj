@@ -149,6 +149,7 @@
     <ClCompile Include="UniTest\IOBJFileMgrUniTest.cpp" />
     <ClCompile Include="UniTest\LoggerMgrUniTest.cpp" />
     <ClCompile Include="UniTest\ShaderUniTest.cpp" />
+    <ClCompile Include="Utils\Helper.cpp" />
     <ClCompile Include="Utils\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
