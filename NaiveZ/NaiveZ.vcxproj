@@ -189,7 +189,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />
-    <None Include="Res\Diablo\Diablo.mtl" />
     <None Include="Res\EyeBall\eyeball.mtl" />
     <None Include="Res\Shaders\eyeball.fs" />
     <None Include="Res\Shaders\eyeball.vs" />
@@ -201,11 +200,6 @@
     <Text Include="Doc\开发计划\开发计划.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Res\Diablo\Diablo_diff.bmp" />
-    <Image Include="Res\Diablo\Diablo_diff.dds" />
-    <Image Include="Res\Diablo\Diablo_glow.dds" />
-    <Image Include="Res\Diablo\Diablo_norm.dds" />
-    <Image Include="Res\Diablo\Diablo_spec.dds" />
     <Image Include="ScreenShot\bunny_wireframe.png" />
   </ItemGroup>
   <ItemGroup>

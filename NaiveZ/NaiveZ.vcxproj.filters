@@ -307,9 +307,6 @@
       <Filter>Res\Shaders</Filter>
     </None>
     <None Include="..\README.md" />
-    <None Include="Res\Diablo\Diablo.mtl">
-      <Filter>Res\Diablo</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Doc\开发计划\开发计划.txt">
@@ -319,21 +316,6 @@
   <ItemGroup>
     <Image Include="ScreenShot\bunny_wireframe.png">
       <Filter>ScreenShot</Filter>
-    </Image>
-    <Image Include="Res\Diablo\Diablo_diff.bmp">
-      <Filter>Res\Diablo</Filter>
-    </Image>
-    <Image Include="Res\Diablo\Diablo_diff.dds">
-      <Filter>Res\Diablo</Filter>
-    </Image>
-    <Image Include="Res\Diablo\Diablo_glow.dds">
-      <Filter>Res\Diablo</Filter>
-    </Image>
-    <Image Include="Res\Diablo\Diablo_norm.dds">
-      <Filter>Res\Diablo</Filter>
-    </Image>
-    <Image Include="Res\Diablo\Diablo_spec.dds">
-      <Filter>Res\Diablo</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
