@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <map>
 
 #include "../../Math/Include/Vector.h"
 #include "../../Utils/Include/Constant.h"
@@ -13,6 +14,8 @@ namespace NaiveZ3D
 	class Mesh
 	{
 	public:
+		Mesh():mUseForRecord_(0){}
+
 		void SetName(const std::string& name) { mName_ = name; }
 		std::string GetName()const { return mName_; }
 
@@ -33,19 +36,20 @@ namespace NaiveZ3D
 	private:
 		//由于使用了纹理，因此一次性生成全部数据，并缓存
 		void BuildDataUseTex(const Model& model)const;
+		bool HasIndice(const std::string&)const;
 
 	private:
 		std::string mName_;
 		std::string mMtlName_;
 		std::vector<Face> mFaceBuffer_;
 
-		//std::vector<Vector3> mVertexBuffer_;
-		//std::vector<Normal> mNormalBuffer_;
-		//std::vector<TextureCoord> mTextureCoordBuffer_;
-
 		mutable std::vector<Vector3> mVertexCache_;//缓存
 		mutable std::vector<unsigned int> mIndiceCache_;//缓存
 		mutable std::vector<TextureCoord> mTextureCoordCache_;//缓存
 		mutable std::vector<Vector3> mNormalCache_;//缓存
+
+		//建立element draw的辅助结构
+		mutable std::map<std::string, size_t> mUseForBuild_;
+		mutable size_t mUseForRecord_;//当前最大的顶点索引
 	};
 }

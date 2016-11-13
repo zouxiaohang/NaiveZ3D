@@ -11,7 +11,6 @@ namespace NaiveZ3D
 	class Model
 	{
 	public:
-		Model():mUseForRecord_(0){}
 		void AddMesh(Mesh&& mesh)
 		{
 			mMeshVector_.emplace_back(std::move(mesh));
@@ -37,11 +36,6 @@ namespace NaiveZ3D
 
 		bool UseTex()const { return !mTextureCoordBuffer_.empty() && 1; }
 
-	public:
-		bool HasIndice(const std::string&)const;
-		std::map<std::string, size_t>& GetBuildMap()const { return mUseForBuild_; }
-		size_t& GetRecord()const { return mUseForRecord_; }
-
 	private:
 		std::string mModelName_;
 		std::string mMtl_;
@@ -50,8 +44,5 @@ namespace NaiveZ3D
 		std::vector<Vector3> mVertexBuffer_;			//全局数据
 		std::vector<Normal> mNormalBuffer_;				//全局数据
 		std::vector<TextureCoord> mTextureCoordBuffer_;	//全局数据
-
-		mutable std::map<std::string, size_t> mUseForBuild_;
-		mutable size_t mUseForRecord_;//当前最大的顶点索引
 	};
 }
