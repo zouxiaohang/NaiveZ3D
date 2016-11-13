@@ -190,8 +190,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />
-    <None Include="Res\Diablo\Diablo.objj" />
-    <None Include="Res\EyeBall\eyeball.mtl" />
     <None Include="Res\Shaders\eyeball.fs" />
     <None Include="Res\Shaders\eyeball.vs" />
     <None Include="Res\Shaders\ShaderConfig" />

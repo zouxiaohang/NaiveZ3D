@@ -17,13 +17,6 @@ namespace
 
 namespace NaiveZ3D
 {
-	bool Mesh::HasIndice(const std::string &indice)const
-	{
-		if (mUseForBuild_.find(indice) != mUseForBuild_.end())
-			return true;
-		return false;
-	}
-
 	const std::vector<unsigned int>& Mesh::GenIndiceBuffer(const Model& model)const
 	{
 		if (!mIndiceCache_.empty())
@@ -114,6 +107,8 @@ namespace NaiveZ3D
 		std::vector<int> vi, ti, ni;
 		record r;
 		int index4[6] = { 0,1,2,0,2,3 };
+		std::map<std::string, size_t> buildMap;
+		size_t re = 0;
 
 		for (const auto& face : mFaceBuffer_)
 		{
@@ -129,18 +124,18 @@ namespace NaiveZ3D
 					r.v = v; r.t = t; r.n = n;
 					auto rs = r.toString();
 					//create indice
-					if(!HasIndice(rs))
+					if (!(buildMap.find(rs) != buildMap.end()))
 					{
-						mUseForBuild_[rs] = mUseForRecord_;
-						mIndiceCache_.push_back(mUseForRecord_);
-						++mUseForRecord_;
+						buildMap[rs] = re;
+						mIndiceCache_.push_back(re);
+						++re;
 						vi.emplace_back(v);
 						ti.emplace_back(t);
 						ni.emplace_back(n);
 					}
 					else
 					{
-						mIndiceCache_.push_back(mUseForBuild_[rs]);
+						mIndiceCache_.push_back(buildMap[rs]);
 					}
 				}
 			}
@@ -154,18 +149,18 @@ namespace NaiveZ3D
 					r.v = v; r.t = t; r.n = n;
 					auto rs = r.toString();
 					//create indice
-					if (!HasIndice(rs))
+					if (!(buildMap.find(rs) != buildMap.end()))
 					{
-						mUseForBuild_[rs] = mUseForRecord_;
-						mIndiceCache_.push_back(mUseForRecord_);
-						++mUseForRecord_;
+						buildMap[rs] = re;
+						mIndiceCache_.push_back(re);
+						++re;
 						vi.emplace_back(v);
 						ti.emplace_back(t);
 						ni.emplace_back(n);
 					}
 					else
 					{
-						mIndiceCache_.push_back(mUseForBuild_[rs]);
+						mIndiceCache_.push_back(buildMap[rs]);
 					}
 				}
 			}

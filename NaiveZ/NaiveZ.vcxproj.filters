@@ -291,9 +291,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Res\EyeBall\eyeball.mtl">
-      <Filter>Res\EyeBall</Filter>
-    </None>
     <None Include="Res\Shaders\test.fs">
       <Filter>Res\Shaders</Filter>
     </None>
@@ -310,9 +307,6 @@
       <Filter>Res\Shaders</Filter>
     </None>
     <None Include="..\README.md" />
-    <None Include="Res\Diablo\Diablo.objj">
-      <Filter>Res\Diablo</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Doc\开发计划\开发计划.txt">
