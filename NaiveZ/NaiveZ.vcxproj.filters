@@ -307,6 +307,9 @@
       <Filter>Res\Shaders</Filter>
     </None>
     <None Include="..\README.md" />
+    <None Include="Res\Diablo\Diablo.objj">
+      <Filter>Res\Diablo</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Doc\开发计划\开发计划.txt">
@@ -317,10 +320,5 @@
     <Image Include="ScreenShot\bunny_wireframe.png">
       <Filter>ScreenShot</Filter>
     </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Object Include="Res\Diablo\Diablo.obj">
-      <Filter>Res\Diablo</Filter>
-    </Object>
   </ItemGroup>
 </Project>
