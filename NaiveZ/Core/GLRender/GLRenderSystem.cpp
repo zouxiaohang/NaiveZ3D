@@ -32,7 +32,9 @@ bool NaiveZ3D::GLRenderSystem::Init(Application* app)
 
 	//开启深度测试
 	glEnable(GL_DEPTH_TEST);
-	//glEnable(GL_CULL_FACE);
+
+	//设置太阳光
+	SetSunLight(Vector3(-1, -1, 0));
 
 	return true;
 }
@@ -67,6 +69,11 @@ void NaiveZ3D::GLRenderSystem::SetClearColor(GLColor c)
 void NaiveZ3D::GLRenderSystem::CommitModel(const ModelMap& map)
 {
 	CreateGLModelBuffer(map);
+}
+
+void NaiveZ3D::GLRenderSystem::SetSunLight(Vector3 pos, Vector3 color)
+{
+	mSunLight_ = SunLightPtr(new SunLight(pos, color));
 }
 
 void NaiveZ3D::GLRenderSystem::SetViewPort(GLint x, GLint y, GLint w, GLint h)

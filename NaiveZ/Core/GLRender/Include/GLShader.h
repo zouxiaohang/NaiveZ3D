@@ -30,6 +30,8 @@ namespace NaiveZ3D
 		void SetUniformMatrixByName(const std::string& name, const T& value);
 		template<class T >
 		void SetUniformFIByName(const std::string& name, const T& value);
+		template<class T>
+		void SetUniformVByName(const std::string& name, const T& value);
 
 		std::map<std::string, std::string> GetShaderSource()const { return mSource_; }
 		std::string GetShaderName()const { return mShaderName_; }
@@ -56,6 +58,9 @@ namespace NaiveZ3D
 
 		GLuint mKdSampler2D_;
 		GLuint mUseTex_;
+
+		GLuint mSunLightDirWLoc_;
+		GLuint mSunLightColorLoc_;
 	};
 
 	template<class T>
@@ -82,6 +87,18 @@ namespace NaiveZ3D
 		else if (name == "UseTex")
 		{
 			glUniform1i(mUseTex_, value);
+		}
+	}
+	template<class T>
+	inline void Shader::SetUniformVByName(const std::string & name, const T & value)
+	{
+		if (name == "SunLightDirW")
+		{
+			glUniform3f(mSunLightDirWLoc_, value.x_, value.y_, value.z_);
+		}
+		else if (name == "SunLightColor")
+		{
+			glUniform3f(mSunLightColorLoc_, value.x_, value.y_, value.z_);
 		}
 	}
 }

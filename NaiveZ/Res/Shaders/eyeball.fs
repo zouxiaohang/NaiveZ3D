@@ -7,8 +7,10 @@ in vec3 normalOutW;
 uniform sampler2D kdSampler2D; 
 uniform int UseTex;
 
-out vec4 color;
+uniform vec3 SunLightDirW;
+uniform vec3 SunLightColor;
 
+out vec4 color;
 
 void main()
 {

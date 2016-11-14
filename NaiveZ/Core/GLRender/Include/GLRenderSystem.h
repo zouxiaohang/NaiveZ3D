@@ -10,6 +10,8 @@
 #include "GLColor.h"
 #include "../../../File/Include/Model.h"
 #include "GLModel.h"
+#include "../../Light/Include/SunLight.h"
+#include "../../Light/Include/PointLight.h"
 
 namespace NaiveZ3D
 {
@@ -24,10 +26,13 @@ namespace NaiveZ3D
 
 		bool Init(Application* app);
 		void Draw(GLfloat delta);
+
 	public:
 		void SetClearColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a = 1.0);
 		void SetClearColor(GLColor c);
 		void CommitModel(const ModelMap& map);
+		void SetSunLight(Vector3 pos, Vector3 color = Vector3(1, 1, 1));
+
 	private:
 		void SetViewPort(GLint x, GLint y, GLint w, GLint h);
 		void CreateGLModelBuffer(const ModelMap&);
@@ -37,5 +42,9 @@ namespace NaiveZ3D
 		Application* mApplication_;
 		ViewPort mViewPort_;
 		GLModelBuffer mGLModelBuffer_;
+
+		////// π‚‘¥ //////
+		SunLightPtr mSunLight_;
+		PointLightPtr mPointLights_[5];
 	};
 }

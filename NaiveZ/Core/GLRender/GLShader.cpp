@@ -132,5 +132,8 @@ namespace NaiveZ3D
 		mMNormalLoc_ = glGetUniformLocation(mProgram_, "M_Normal");
 		mKdSampler2D_ = glGetUniformLocation(mProgram_, "kdSampler2D");
 		mUseTex_ = glGetUniformLocation(mProgram_, "UseTex");
+
+		mSunLightDirWLoc_ = glGetUniformLocation(mProgram_, "SunLightDirW");
+		mSunLightColorLoc_ = glGetUniformLocation(mProgram_, "SunLightColor");
 	}
 }

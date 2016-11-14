@@ -202,9 +202,6 @@
   <ItemGroup>
     <Image Include="ScreenShot\bunny_wireframe.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Object Include="Res\Diablo\Diablo.obj" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
