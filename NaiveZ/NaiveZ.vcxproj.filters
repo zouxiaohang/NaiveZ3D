@@ -318,4 +318,9 @@
       <Filter>ScreenShot</Filter>
     </Image>
   </ItemGroup>
+  <ItemGroup>
+    <Object Include="Res\Diablo\Diablo.obj">
+      <Filter>Res\Diablo</Filter>
+    </Object>
+  </ItemGroup>
 </Project>
