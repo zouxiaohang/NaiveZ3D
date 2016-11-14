@@ -17,6 +17,7 @@ namespace NaiveZ3D
 			mLinearAtten_(la),
 			mQuadAtten_(qa)
 		{}
+		PointLight(const PointLight&);
 
 	private:
 		Vector3 mPosition_;

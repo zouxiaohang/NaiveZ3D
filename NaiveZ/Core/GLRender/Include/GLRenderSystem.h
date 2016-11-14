@@ -32,6 +32,7 @@ namespace NaiveZ3D
 		void SetClearColor(GLColor c);
 		void CommitModel(const ModelMap& map);
 		void SetSunLight(Vector3 pos, Vector3 color = Vector3(1, 1, 1));
+		void AddPointLight(PointLight p);
 
 	private:
 		void SetViewPort(GLint x, GLint y, GLint w, GLint h);
@@ -45,6 +46,6 @@ namespace NaiveZ3D
 
 		////// นโิด //////
 		SunLightPtr mSunLight_;
-		PointLightPtr mPointLights_[5];
+		std::vector<PointLightPtr> mPointLights_;
 	};
 }

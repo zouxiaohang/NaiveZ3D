@@ -50,9 +50,13 @@ void NaiveZ3D::GLRenderSystem::Draw(GLfloat delta)
 	model = glm::translate(model, glm::vec3(0, 0, -20));
 	model = glm::rotate(model, (GLfloat)glfwGetTime() * 1.0f, glm::vec3(0.0f, 1.0f, 0.0f));
 	//GLShaderMgr::Instance().SetShaderUniformMatrix("eyeball", "M", model);
-	//GLShaderMgr::Instance().SetShaderUniformMatrix("eyeball", "M_Normal", model);
+	GLShaderMgr::Instance().SetShaderUniformMatrix("eyeball", "M_Normal", model);
 	auto transform = mApplication_->GetCamera().GetVPTransform() * model;
 	GLShaderMgr::Instance().SetShaderUniformMatrix("eyeball", "MVP", transform);
+
+	GLShaderMgr::Instance().SetUniformVByName("SunLightDirW", mSunLight_->GetDir());
+	GLShaderMgr::Instance().SetUniformVByName("SunLightColor", mSunLight_->GetColor());
+
 	DrawGLModel();
 }
 
@@ -74,6 +78,11 @@ void NaiveZ3D::GLRenderSystem::CommitModel(const ModelMap& map)
 void NaiveZ3D::GLRenderSystem::SetSunLight(Vector3 pos, Vector3 color)
 {
 	mSunLight_ = SunLightPtr(new SunLight(pos, color));
+}
+
+void NaiveZ3D::GLRenderSystem::AddPointLight(PointLight p)
+{
+	mPointLights_.emplace_back(std::unique_ptr<PointLight>(new PointLight(p)));
 }
 
 void NaiveZ3D::GLRenderSystem::SetViewPort(GLint x, GLint y, GLint w, GLint h)
