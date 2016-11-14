@@ -27,7 +27,6 @@ int main()
 	auto eyeball = "Res/EyeBall/eyeball.obj";
 	auto cube = "Res/Cube/cube.obj";
 	auto bunny = "Res/Bunny/bunny.obj";
-	auto ironman = "Res/IronMan/IronMan.obj";
 	auto diablo = "Res/Diablo/Diablo.obj";
 	vector<string> objs = { cube };
 	app.LoadAndDraw(objs);

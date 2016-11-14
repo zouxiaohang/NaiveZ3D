@@ -34,7 +34,7 @@ bool NaiveZ3D::GLRenderSystem::Init(Application* app)
 	glEnable(GL_DEPTH_TEST);
 
 	//…Ë÷√Ã´—Ùπ‚
-	SetSunLight(Vector3(-1, -1, 0));
+	SetSunLight(Vector3(-1, -1, 0), Vector3(0.2, 0.2, 0.2));
 
 	return true;
 }

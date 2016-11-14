@@ -4,6 +4,7 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <string>
 using namespace std;
 
 namespace NaiveZ3D
@@ -133,7 +134,23 @@ namespace NaiveZ3D
 		mKdSampler2D_ = glGetUniformLocation(mProgram_, "kdSampler2D");
 		mUseTex_ = glGetUniformLocation(mProgram_, "UseTex");
 
-		mSunLightDirWLoc_ = glGetUniformLocation(mProgram_, "SunLightDirW");
-		mSunLightColorLoc_ = glGetUniformLocation(mProgram_, "SunLightColor");
+		mSunLightUnifrom_.mDirLoc_ = glGetUniformLocation(mProgram_, "Sun.Dir");
+		mSunLightUnifrom_.mColorLoc_ = glGetUniformLocation(mProgram_, "Sun.Color");
+
+		for (auto i = 0; i != 5; ++i)
+		{
+			PointLightUniform uniform;
+			uniform.mPosLoc_ = glGetUniformLocation(mProgram_, string("PointLight[" + to_string(i) + "].Pos").c_str());
+			uniform.mColorLoc_ = glGetUniformLocation(mProgram_, string("PointLight[" + to_string(i) + "].Color").c_str());
+			uniform.mRangeLoc_ = glGetUniformLocation(mProgram_, string("PointLight[" + to_string(i) + "].Range").c_str());
+			uniform.mConstLoc_ = glGetUniformLocation(mProgram_, string("PointLight[" + to_string(i) + "].ConstAtten").c_str());
+			uniform.mLinearLoc_ = glGetUniformLocation(mProgram_, string("PointLight[" + to_string(i) + "].LinearAtten").c_str());
+			uniform.mQuadLoc_ = glGetUniformLocation(mProgram_, string("PointLight[" + to_string(i) + "].QuadAtten").c_str());
+
+			mPointLightUniformBuffer_[i] = uniform;
+		}
+
+		mMaterialUniform_.mDiffuseLoc_ = glGetUniformLocation(mProgram_, "Material.Diffuse");
+		mMaterialUniform_.mDiffuseLoc_ = glGetUniformLocation(mProgram_, "Material.Specular");
 	}
 }

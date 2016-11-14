@@ -9,6 +9,26 @@
 
 namespace NaiveZ3D
 {
+	struct SunLightUniform
+	{
+		GLuint mDirLoc_;
+		GLuint mColorLoc_;
+	};
+	struct PointLightUniform
+	{
+		GLuint mPosLoc_;
+		GLuint mColorLoc_;
+		GLuint mRangeLoc_;
+		GLuint mConstLoc_;
+		GLuint mLinearLoc_;
+		GLuint mQuadLoc_;
+	};
+	struct MaterialUniform
+	{
+		GLuint mDiffuseLoc_;
+		GLuint mSpecularLoc_;
+	};
+
 	class Shader
 	{
 	public:
@@ -59,8 +79,10 @@ namespace NaiveZ3D
 		GLuint mKdSampler2D_;
 		GLuint mUseTex_;
 
-		GLuint mSunLightDirWLoc_;
-		GLuint mSunLightColorLoc_;
+		SunLightUniform mSunLightUnifrom_;
+		PointLightUniform mPointLightUniformBuffer_[5];
+
+		MaterialUniform mMaterialUniform_;
 	};
 
 	template<class T>
@@ -94,11 +116,11 @@ namespace NaiveZ3D
 	{
 		if (name == "SunLightDirW")
 		{
-			glUniform3f(mSunLightDirWLoc_, value.x_, value.y_, value.z_);
+			glUniform3f(mSunLightUnifrom_.mDirLoc_, value.x_, value.y_, value.z_);
 		}
 		else if (name == "SunLightColor")
 		{
-			glUniform3f(mSunLightColorLoc_, value.x_, value.y_, value.z_);
+			glUniform3f(mSunLightUnifrom_.mColorLoc_, value.x_, value.y_, value.z_);
 		}
 	}
 }
